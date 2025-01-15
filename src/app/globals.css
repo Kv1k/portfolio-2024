@@ -2,20 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-manrope: "Manrope", sans-serif;
+  --font-michroma: "Michroma", sans-serif;
+
+  --background: #2B2A2A;
+  --foreground: #FFFFFF;
+  --primaryColor :#FFFFFF;
+  --primaryTextColor :#FFFFFF;
+  --secondColor :#85EA26;
+  --secondTextColor :#85EA26;
+
+  --headlineBig : clamp(1.5rem, 7vw, 65px);
+  --headlineMedium: clamp(1rem, 2vw, 4rem);
+  --headlineSmall: clamp(0.9rem, 0.75vw, 1.3rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope);
+  color: var(--primaryColor);
+}
+
+.michroma-text {
+  font-family: var(--font-michroma); 
+}
+
+.stretchLetter{
+  letter-spacing: 0.5rem;
+  transform: scaleX(1.7);
+  display: inline-block;
+}
+
+.stretchLetter2{
+  letter-spacing: 0.5rem;
+  transform: scaleX(0.9);
+  display: inline-block;
+}
+.hero_header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  
+  gap: 0.7rem;
+
+  font-size: var(--headlineBig);
+  color: var(--primaryTextColor);
+  font-family: var(--font-michroma); 
+} 
+.content {
+  display: flex;
+  width: 100%;
+}
+
+section {
+  position: relative;
+  width: 75vw;
+  min-width: 75vw;
+  height: 100vh;
+}
+
+section.vertical {
+  width: 100vw;
+  min-width: 100vw;
+  height: 100%;
+}
+
+section.vertical .inner-section {
+  position: relative;
+  width: 100vw;
+  height: 105vh ;
+}
+
+section.vertical .inner-section.center {
+  background-color: #2C2F33;
+}
+
+/* LocomotiveScroll actif uniquement pour desktop */
+#desktop-section [data-scroll-container] {
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
+/* Scroll natif pour mobile */
+#mobile-section {
+  overflow-y: scroll;
+}
+
+
+.horizontal-wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horizontal-container {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.skill-section {
+  color: #85EA26;
+  line-height: 40px;
+  writing-mode: vertical-rl; 
+  text-orientation: mixed;
+  transform: scaleX(0.7); 
 }

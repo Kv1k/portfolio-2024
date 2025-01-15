@@ -1,0 +1,49 @@
+
+.marquee-wrap {
+    height:100vh ;
+   
+position: relative;
+}
+
+.slider {
+list-style-type: none;
+text-align: center;
+animation: slider linear infinite;
+}
+
+.slider li {
+line-height: 40px;
+writing-mode: vertical-rl; /* Orientation verticale */
+text-orientation: mixed;
+transform: rotate(180deg); /* Inversion pour partir du haut */
+}
+
+.slider2 {
+list-style-type: none;
+text-align: center;
+animation: slider2 linear infinite;
+}
+
+.slider2 li {
+line-height: 25px;
+writing-mode: vertical-rl;
+text-orientation: mixed;
+}
+
+@keyframes slider {
+0% {
+    transform: translateY(0);
+}
+100% {
+    transform: translateY(-50%);
+}
+}
+
+@keyframes slider2 {
+0% {
+    transform: translateY(-50%);
+}
+100% {
+    transform: translateY(0);
+}
+}

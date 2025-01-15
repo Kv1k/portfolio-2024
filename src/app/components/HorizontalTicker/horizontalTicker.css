@@ -1,0 +1,37 @@
+.marquee-wrap-horizontal {
+    width: 100vw; /* Utilise toute la largeur */
+    position: relative;
+   
+}
+  
+  .slider-horizontal, .slider2-horizontal {
+    list-style-type: none;
+    display: flex; /* Aligne les items horizontalement */
+    animation: slider-horizontal linear infinite;
+    white-space: nowrap; /* Force les items à rester sur une seule ligne */
+  }
+  
+  .slider-horizontal li, .slider2-horizontal li {
+    margin-right: 2rem; /* Espacement entre les items */
+    white-space: nowrap; /* Empêche les retours à la ligne */
+    text-align: center;
+  }
+  
+  @keyframes slider-horizontal {
+    0% {
+      transform: translateX(0); /* Départ à gauche */
+    }
+    100% {
+      transform: translateX(-100%); /* Défilement vers la gauche */
+    }
+  }
+  
+  @keyframes slider2-horizontal {
+    0% {
+      transform: translateX(100%); /* Départ à droite */
+    }
+    100% {
+      transform: translateX(0); /* Défilement vers la gauche */
+    }
+  }
+  
