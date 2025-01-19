@@ -150,10 +150,11 @@ const ScrollSection = () => {
             
             <div className="inner-section">
               <div className="relative w-full">
-                <div className="flex flex-col justify-start items-end w-full h-[370px] pr-[18rem]">
+                <div className="flex flex-col justify-start items-end w-full h-[370px] pr-[11rem]">
                   <div>
                     <p>SUDALYS</p>
                     <div className="bg-slate-500 w-[325px] h-[360px]" />
+                    <div><p>Click to see</p></div>
                   </div>
                 </div>
 
@@ -161,15 +162,17 @@ const ScrollSection = () => {
                   <div>
                     <p>ANGOVA</p>
                     <div className="bg-slate-500 w-[311px] h-[450px]" />
+                    <div><p>Click to see</p></div>
                   </div>
                 </div>
-                <div className="absolute top-[50rem] left-[50rem] flex flex-col justify-start items-start  h-[370px] ">
+                <div className="absolute top-[50rem] left-[40rem] flex flex-col justify-start items-start  h-[370px] ">
                   <div>
                     <p>H2N AUTOMOBILE</p>
                     <div className="bg-slate-500 w-[311px] h-[450px]" />
+                    <div><p>Click to see</p></div>
                   </div>
                 </div>
-                <div className="absolute top-[85rem]  left-[55rem] flex flex-col justify-start items-start  h-[370px] ">
+                <div className="absolute top-[85rem]  left-[15rem] flex flex-col justify-start items-start  h-[370px] ">
                   <div className='relative flex flex-col'>
                    <div><p>BE LOUNGE</p></div>
                     

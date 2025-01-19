@@ -44,14 +44,14 @@ function Contact() {
         }
     };
     return (
-        <div className='michroma-text h-full flex flex-col justify-center items-center'>
+        <div className='michroma-text h-full flex flex-col justify-center items-center pb-10'>
             <div>
                 <Image src={Logo} alt='' className='!w-[150px]'/>
             </div>
             
             <div className="form w-[62vw]  flex flex-col items-center "> 
-                <h1 className=" text-[25px] md:text-[30px]  text-[#85EA26]">CONTACT ME</h1>
-                <p className='text-[20px] font-bold mb-2 mt-5 text-[#85EA26]'><a href="tel:+33467702808" className="hover:underline">07 83 97 19 31</a></p>
+                <h1 className=" text-[17px] md:text-[30px]  text-[#85EA26]">CONTACTEZ-MOI</h1>
+                <p className='text-[17px] font-bold mb-2 mt-5 text-[#85EA26]'><a href="tel:+33467702808" className="hover:underline">07 83 97 19 31</a></p>
                 <div className="flex justify-center items-center mb-7">
                     <Separator className="bg-[#85EA26] !w-[20vw] "/>
                     <div className="mx-3 lg:mx-7"><span className="text-[#85EA26] text-[15px]">or</span></div>

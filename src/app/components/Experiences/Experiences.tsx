@@ -2,11 +2,29 @@ import React from "react";
 
 function Experiences() {
   return (
-    <div className="experience-container">
-      <div className="image-container">
-        <img src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Experience 1" />
-        <img src="https://images.pexels.com/photos/3371358/pexels-photo-3371358.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Experience 2" />
-        <img src="https://images.pexels.com/photos/5207262/pexels-photo-5207262.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Experience 3" />
+    <div className="w-[100vw] h-auto py-12 px-0 md:px-6">
+      <div className="flex flex-col justify-center items-end ">
+        <div><p>SUDALYS</p></div>
+        <div className="bg-slate-500 w-[200px] h-[280px]" />
+        <div><p>Click to see</p></div>
+      </div>
+
+      <div className="flex flex-col justify-center items-start ">
+        <div><p>H2N AUTOMOBILE</p></div>
+        <div className="bg-slate-500 w-[200px] h-[280px]" />
+        <div><p>Click to see</p></div>
+      </div>
+
+      <div className="flex flex-col justify-center items-end ">
+        <div><p>ANGOVA</p></div>
+        <div className="bg-slate-500 w-[200px] h-[280px]" />
+        <div><p>Click to see</p></div>
+      </div>
+
+      <div className="flex flex-col justify-center items-start ">
+        <div><p>BE LOUNGE</p></div>
+        <div className="bg-slate-500 w-[200px] h-[280px]" />
+        <div><p>Click to see</p></div>
       </div>
     </div>
   );

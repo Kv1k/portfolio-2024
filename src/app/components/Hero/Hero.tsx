@@ -6,7 +6,7 @@ function Hero() {
   return (
     <div>
       <ParticlesContainer/>
-      <header className="hero_header ml-4 lg:ml-[11rem] pb-5 lg:pb-[15rem] relative">
+      <header className="hero_header ml-4 lg:ml-[6rem] pb-5 lg:pb-[15rem] relative">
       
         <h1>FULLSTACK</h1>
         <h2 className="ml-4 lg:ml-[3rem]">WEB DEVELOPER</h2>
