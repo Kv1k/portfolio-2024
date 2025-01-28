@@ -1,13 +1,14 @@
 import React from 'react'
 import { GrReactjs } from "react-icons/gr";
 import { FaJs,FaHtml5,FaCss3Alt,FaSymfony, FaPhp,FaNode, FaJava, FaDocker, FaLinux, FaGithub} from "react-icons/fa";
-import Image from "next/image";
 import LogoTwig from "../../../../public/twig-logo.png";
 import Spatialite from "../../../../public/spatialite.png"
 import { TbFileTypeSql } from "react-icons/tb";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { SiSqlite, SiGithubactions,SiDart,SiNextdotjs } from "react-icons/si";
 import { RiFlutterFill } from "react-icons/ri";
+import Image from "next/image"
+import Moi from "../../../../public/moi2.jpg"
 
 function AboutMe() {
   return (
@@ -15,14 +16,16 @@ function AboutMe() {
       <div className="inner-section h-[100vh] lg:h-[98vh] michroma-text">
                  
         <div className='h-[50%] lg:h-[64%] mt-10 lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[45vw]'>
-          <div className="bg-slate-500 w-[90%] lg:w-[250px] h-[240px] lg:h-[330px] mb-[30px]" />
+          <div className=" w-[90%] lg:w-[270px] h-fit max-h-[240px] lg:max-h-[390px] mb-[30px]" >
+            <Image src={Moi} alt='' className='w-[100%] h-auto'/>
+          </div>
         </div>
         <div className='  flex flex-col items-center'>
           <div className="bg-white w-[88vw] lg:w-[92vw] h-[1.2px]"/>
         </div>
       
         <h3 className="absolute mt-[20px] left-[6vw] lg:left-[4vw] p-0 text-[16px]">
-          About me
+          À propos de moi
         </h3>
         <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[45vw] mt-[13vh] lg:mt-[25px] '>
         
@@ -42,7 +45,7 @@ function AboutMe() {
         </div>
       
         <h3 className="mt-[20px] ml-[6vw] lg:ml-[4vw] p-0 text-[16px] ">
-          Skills
+          Compétences
         </h3>
         <div className="flex w-full justify-center items-center mt-[45px]">
           <div className="flex w-[85%]  py-8  pl-6 pr-1 lg:px-8 border border-[#85EA26] ">

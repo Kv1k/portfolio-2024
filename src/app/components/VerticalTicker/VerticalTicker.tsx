@@ -36,7 +36,7 @@ function VerticalTicker({ type }) {
         ))
       : Array.from({ length: 25 }).map((_, index) => (
           <li key={index} className="mt-[1rem]">
-            KNOW MORE ABOUT ME
+            EN SAVOIR PLUS
           </li>
         ));
 

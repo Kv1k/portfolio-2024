@@ -35,7 +35,7 @@ function HorizontalTicker({ type }) {
         ))
       : Array.from({ length: 25 }).map((_, index) => (
           <li key={index} className="inline-block pt-[10px] font-semibold text-[18px]">
-            KNOW MORE ABOUT ME
+            EN SAVOIR PLUS
           </li>
         ));
 

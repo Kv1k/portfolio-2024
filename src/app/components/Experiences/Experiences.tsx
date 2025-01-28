@@ -5,7 +5,9 @@ function Experiences() {
     <div className="w-[100vw] h-auto py-12 px-0 md:px-6">
       <div className="flex flex-col justify-center items-end ">
         <div><p>SUDALYS</p></div>
-        <div className="bg-slate-500 w-[200px] h-[280px]" />
+        <div className="bg-slate-500 w-[200px] h-[280px]" >
+          
+        </div>
         <div><p>Click to see</p></div>
       </div>
 

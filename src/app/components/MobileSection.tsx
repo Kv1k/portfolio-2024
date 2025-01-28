@@ -8,19 +8,19 @@ import AboutMe from "./AboutMe/AboutMe";
 function MobileSection() {
   return (
     <div className="flex flex-col overflow-y-scroll overflow-x-hidden">
-      <section className="w-[100vw] h-auto">
+      <section className="w-[100vw] h-auto"  id='accueil'>
         <Hero />
       </section>
       <HorizontalTicker type="xp" />
       
-      <section className="w-[100vw]  h-auto">
+      <section className="w-[100vw]  h-auto" id='experiences'>
         <Experiences/>
       </section>
       <HorizontalTicker type="aboutMe"/>
-      <section className="w-[100vw]  h-auto">
+      <section className="w-[100vw]  h-auto" id='aboutMe'>
         <AboutMe/>
       </section>
-      <section className="w-[100vw]  h-auto">
+      <section className="w-[100vw]  h-auto" id='contact'>
         <Contact/>
       </section>
       

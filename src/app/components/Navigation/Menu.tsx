@@ -4,20 +4,22 @@ import React, {useState, useRef, useEffect} from 'react';
 import Link from 'next/link';
 import "./menu.css";
 import {gsap} from "gsap";
-import {useGSAP} from "@gsap/react"
+import {useGSAP} from "@gsap/react";
+import Image from "next/image";
+import Logo from "../../../../public/black-logo.png";
 
 gsap.registerPlugin(useGSAP);
 
 
 const menuLinks = [
-  { path: "/", label: "Home"},
-  { path: "/work", label: "Work"},
-  { path: "/about", label: "About"},
-  { path: "/contact", label: "Contact"}
+  { path: "#accueil", label: "Accueil"},
+  { path: "#experiences", label: "Experiences"},
+  { path: "#aboutMe", label: "A propos"},
+  { path: "#contact", label: "Contact"}
 ];
 
 
-const Menu = () => {
+const Menu = ({ locoScroll }) => {
   const container = useRef();
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,6 +57,22 @@ const Menu = () => {
     }
   }, [isMenuOpen])
 
+  const handleMenuClick = (path) => {
+    // Faites défiler la page vers la section désirée avec locoScroll
+    const targetElement = document.querySelector(path); // Sélectionner l'élément de la section
+    if (targetElement) {
+      // Utiliser locoScroll pour faire défiler
+      locoScroll.current.scrollTo(targetElement, {
+        offset: 0,
+        duration: 1000,
+        easing: "easeInOutQuad", // ou l'easing que vous souhaitez
+      });
+    }
+
+    // Fermer le menu après un clic
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className='menu-container' ref={container}>
       <div className="menu-bar bg-[#2B2A2A] h-[63px] border-b border-white text-black ">
@@ -71,13 +89,14 @@ const Menu = () => {
           <div className='w-[20%] flex flex-col justify-between'>
             <div className="menu-logo lowercase michroma-text"> <Link href="/">kamilnachat</Link></div>
             <div className="menu-close-icon">
-                <p>&#x2715;</p>
-              </div>
+              <Image src={Logo} alt='' className='w-[53px] h-auto' />
+
+            </div>
           </div>
           <div className="menu-overlay-bar  w-[80%] flex flex-col justify-between">
 
             <div className="menu-close w-full flex justify-end" onClick={toggleMenu}>
-              <p>Close</p>
+              <p>Fermer</p>
             </div>
             <div className="menu-copy mt-[50px]">
               <div className="menu-links">
@@ -98,8 +117,12 @@ const Menu = () => {
             <div className="menu-info flex justify-between text-[14px] md:text-[15px]">
              
               <div className="menu-info-col  text-black">
-                <a>LinkedIn &#8599;</a>
-                <a>GitHub &#8599;</a>
+                <a href="https://www.linkedin.com/in/kamil-nachat-1a11b31a5/?originalSubdomain=fr" target="_blank" rel="noopener noreferrer">
+                  LinkedIn &#8599;
+                </a>
+                <a href="https://github.com/kv1k" target="_blank" rel="noopener noreferrer">
+                  GitHub &#8599;
+                </a>
               </div>
               <div className="menu-info-col">
                 <p>kamil.nachat@hotmail.com</p>

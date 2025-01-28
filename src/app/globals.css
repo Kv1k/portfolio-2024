@@ -79,7 +79,7 @@ section.vertical {
 section.vertical .inner-section {
   position: relative;
   width: 100vw;
-  height: 105vh ;
+  height: auto ;
 }
 
 section.vertical .inner-section.center {

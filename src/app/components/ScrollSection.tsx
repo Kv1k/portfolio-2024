@@ -8,6 +8,11 @@ import Hero from './Hero/Hero';
 import VerticalTicker from './VerticalTicker/VerticalTicker';
 import AboutMe from './AboutMe/AboutMe';
 import Contact from './Contact/Contact';
+import Image from "next/image"
+import SudalysImg from "../../../public/sudalys.png"
+import AngovaImg from "../../../public/auto-ecole.jpg"
+import H2NImg from "../../../public/h2n.jpg"
+import BeLoungeImg from "../../../public/belounge.png"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -129,55 +134,76 @@ const ScrollSection = () => {
   return (
     <div ref={scrollContainerRef} data-scroll-container>
       <div className="content">
-        <section className='w-[100vw]'>
+        <section className='w-[100vw]' id='accueil'>
           <Hero/>
         </section>
 
          <VerticalTicker type="xp"/>
 
-        <section className="vertical mt-[60px] pb-30">
+        <section className="vertical mt-[60px] pb-30" id='experiences'>
         
           <div ref={animWrapRef} className="anim-wrap">
             
-            <div className="inner-section !h-[75vh]">
+            <div className="inner-section !h-[64vh]">
               <div className="fakePin w-[100%] h-[75vh] flex flex-col justify-center items-center">
-                <div className="font-semibold text-[50px] bottom-2 right-4 ">SELECTED</div> 
-                <div className="michroma-text font-normal text-[27px] stretchLetter">Experiences</div>
+              <div className="michroma-text font-normal text-[27px] stretchLetter">Mes</div>
+                <div className="michroma-text font-normal text-[27px] stretchLetter">Expériences</div>
               </div>
 
               
             </div>
             
-            <div className="inner-section">
+            <div className="inner-section !h-[215vh]">
               <div className="relative w-full">
-                <div className="flex flex-col justify-start items-end w-full h-[370px] pr-[11rem]">
+              <div className="flex flex-col justify-start items-end w-full h-[370px] pr-[11rem]">
+                <div>
+                  <p>SUDALYS</p>
+                  <div 
+                    className="w-[325px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                    onClick={() => window.location.href = "/experience/1"} 
+                  >
+                    <Image src={SudalysImg} alt='' className='w-[100%] h-auto' />
+                  </div>
                   <div>
-                    <p>SUDALYS</p>
-                    <div className="bg-slate-500 w-[325px] h-[360px]" />
-                    <div><p>Click to see</p></div>
+                    <p className="michroma-text text-[12px]">Cliquer pour voir</p>
                   </div>
                 </div>
+              </div>
 
                 <div className="absolute top-[15rem] left-[10rem] flex flex-col justify-start items-start h-[370px]">
                   <div>
                     <p>ANGOVA</p>
-                    <div className="bg-slate-500 w-[311px] h-[450px]" />
-                    <div><p>Click to see</p></div>
+                    <div 
+                      className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                      onClick={() => window.location.href = "/experience/3"} 
+                    >
+                      <Image src={AngovaImg} alt='' className='w-[100%] h-auto'/>
+                    </div>
+                    <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
                   </div>
                 </div>
                 <div className="absolute top-[50rem] left-[40rem] flex flex-col justify-start items-start  h-[370px] ">
                   <div>
                     <p>H2N AUTOMOBILE</p>
-                    <div className="bg-slate-500 w-[311px] h-[450px]" />
-                    <div><p>Click to see</p></div>
+                    <div 
+                      className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                      onClick={() => window.location.href = "/experience/2"} 
+                    >
+                      <Image src={H2NImg} alt='' className='w-[100%] h-auto'/>
+                    </div>
+                    <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
                   </div>
                 </div>
                 <div className="absolute top-[85rem]  left-[15rem] flex flex-col justify-start items-start  h-[370px] ">
                   <div className='relative flex flex-col'>
                    <div><p>BE LOUNGE</p></div>
-                    
-                    <div className="bg-slate-500 w-[311px] h-[310px] " />
-                    <div><p>Click to see</p></div>
+                    <div 
+                      className="w-[311px] h-fit max-h-[310px]  transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                      onClick={() => window.location.href = "/experience/4"} 
+                    >
+                      <Image src={BeLoungeImg} alt='' className='w-[100%] h-auto'/>
+                    </div>
+                    <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
                   </div>
                 </div>
                
@@ -191,14 +217,14 @@ const ScrollSection = () => {
           </div>
         </section>
         <VerticalTicker type="aboutMe"/>
-      <section className="vertical2 mt-[60px] w-[100vw]">
+      <section className="vertical2 mt-[60px] w-[100vw]" id='aboutMe'>
         
         <div ref={animWrap2Ref} className="anim-wrap">
          <AboutMe/>        
         </div>
       </section>
 
-        <section className='mt-[60px] w-[100vw]' >
+        <section className='mt-[60px] w-[100vw]'  id='Contact' >
          <Contact/>
         </section>
       </div>
