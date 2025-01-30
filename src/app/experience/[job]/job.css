@@ -60,10 +60,10 @@
 /* Media */
 .section_bg {
     position: relative;
-    left: 0;
+    left: -25%;
     top: 0;
-    width: 50%;
-    height: 90%;
+    width: 100%;
+    height: 94%;
     overflow: hidden;
     perspective: 200px;
     

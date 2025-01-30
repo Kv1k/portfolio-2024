@@ -144,33 +144,33 @@ export default function JobPage({ params }) {
   }, []);
 
   return (
-    <div className='w-[100vw] h-[100vh] flex items-center justify-center'>
+    <div className='w-[100vw] h-[100vh] flex items-center justify-center '>
         <main className='app w-[100%] h-[100%]'>
         <div className='section'>
             <div className="section_wrapper">
                 <div className="section_info">
-                    <div className="section_info_item w-[60%] justify-between">
+                    <div className="section_info_item w-[10%] lg:w-[60%] justify-between p-[16px] lg:p-0">
                         <span 
                             className="cursor-pointer z-200" 
                             onClick={() => window.location.href = "http://localhost:3000"}
                         >
                             <GrLinkPrevious size={28} />
                         </span>
-                        <span className="text-[10px] michroma-text font-light">[ Survolez pour interagir avec les cartes ]</span>
+                        <span className="hidden lg:block text-[10px] michroma-text font-light">[ Survolez pour interagir avec les cartes ]</span>
                     </div>
-                    <div className="section_info_item w-[50%] py-10">
+                    <div className="section_info_item w-[90%] lg:w-[50%]  overflow-y-scroll pt-[55px]  px-[20px]  lg:px-0">
                         <h1 className="michroma-text font-semibold text-[30px] mb-1">{experience.title}</h1>
-                        <p className="text-[15px] font-extralight mb-8 ">{experience.date}</p>
-                        <p className="text-[17px] michroma-text  mb-4 text-[#85EA26]">
+                        <p className="text-[15px] font-extralight mb-[20px] lg:mb-8 ">{experience.date}</p>
+                        <p className="text-[17px] michroma-text  mb-[10px] lg:mb-4 text-[#85EA26]">
                            {experience.company}
                         </p>
-                        <h2 className="michroma-text underline text-[15px] mb-2">Lieu du poste :</h2>
-                        <p className="font-extralight text-[15px] mb-3">{experience.location}</p>
-                        <h2 className="michroma-text underline text-[15px] mb-2">Description du poste :</h2>
-                        <p className="font-extralight text-[15px] mb-3">{experience.description}</p>
+                        <h2 className="michroma-text underline text-[15px] mb-[5px] lg:mb-2">Lieu du poste :</h2>
+                        <p className="font-extralight text-[15px] mb-[10px] lg:mb-3">{experience.location}</p>
+                        <h2 className="michroma-text underline text-[15px]  mb-[5px] lg:mb-2">Description du poste :</h2>
+                        <p className="font-extralight text-[15px] mb-[10px] lg:mb-3">{experience.description}</p>
 
-                        <h2 className="michroma-text underline text-[15px] mb-1">Technologies utilisées :</h2>
-                        <ul className="font-extralight list-none">
+                        <h2 className="michroma-text underline text-[15px] mb-[5px] lg:mb-1">Technologies utilisées :</h2>
+                        <ul className="font-extralight list-none text-[15px] lg:text-[16px]  mb-[15px] lg:mb-0">
                             {experience.technologies.map((tech, index) => (
                                 <li key={index}>- {tech}</li>
                             ))}
@@ -178,7 +178,8 @@ export default function JobPage({ params }) {
 
                     </div>
                 </div>
-                <div className="section_bg">
+                
+                <div className="section_bg hidden lg:block">
                     <div className="section_bg_card">
                         <div className="section_bg_card_content">
                             <Image src={Moi} alt='' className='section_bg_card_image'/>

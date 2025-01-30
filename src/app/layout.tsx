@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ResponsiveNav from "./components/Navigation/ResponsiveNav";
-import { LocomotiveScrollProvider } from "./context/LocomotiveScrollContext";
+import { LocoScrollProvider } from "./provider/LocoScrollProvider";
 
 const manrope = localFont({
   src: "./fonts/Manrope-VariableFont_wght.ttf",
@@ -31,9 +31,11 @@ export default function RootLayout({
       <body
         className={manrope.className}
       >
+        <LocoScrollProvider>
+          <ResponsiveNav/>
+          {children}
+        </LocoScrollProvider>
         
-        <ResponsiveNav/>
-        {children}
       </body>
     </html>
   );

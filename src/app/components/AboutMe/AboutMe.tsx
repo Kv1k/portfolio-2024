@@ -15,8 +15,8 @@ function AboutMe() {
     <>
       <div className="inner-section h-[100vh] lg:h-[98vh] michroma-text">
                  
-        <div className='h-[50%] lg:h-[64%] mt-10 lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[45vw]'>
-          <div className=" w-[90%] lg:w-[270px] h-fit max-h-[240px] lg:max-h-[390px] mb-[30px]" >
+        <div className='h-[50%] lg:h-[64%] mt-10 lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[35vw] md:pl-[45vw]'>
+          <div className="w-[90%] md:w-[60%] lg:w-[270px] h-fit lg:max-h-[390px] mb-[30px]" >
             <Image src={Moi} alt='' className='w-[100%] h-auto'/>
           </div>
         </div>

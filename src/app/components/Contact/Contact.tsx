@@ -48,8 +48,8 @@ function Contact() {
 
     return (
         <div className='michroma-text h-full flex flex-col justify-center items-center pb-10'>
-            <div>
-                <Image src={Logo} alt='' className='!w-[150px]' />
+            <div className='mb-4'>
+                <Image src={Logo} alt='' className='!w-[90px]' />
             </div>
 
             <div className="form w-[80vw] lg:w-[62vw] flex flex-col items-center "> 

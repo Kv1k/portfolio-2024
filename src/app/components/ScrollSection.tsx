@@ -13,32 +13,26 @@ import SudalysImg from "../../../public/sudalys.png"
 import AngovaImg from "../../../public/auto-ecole.jpg"
 import H2NImg from "../../../public/h2n.jpg"
 import BeLoungeImg from "../../../public/belounge.png"
+import { useLocoScroll } from '../provider/LocoScrollProvider';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollSection = () => {
-  const scrollContainerRef = useRef(null);
-  const animWrapRef = useRef(null);
-  const animWrap2Ref = useRef(null);
+  const {  setScrollContRef, scrollContainerRef, locoScroll } = useLocoScroll();
 
+  // Utiliser useEffect pour affecter les références
+  useEffect(() => {
+    setScrollContRef(document.querySelector(".scroll-container"));
+
+  }, [setScrollContRef]);
+
+    const animWrapRef = useRef(null);
+    const animWrap2Ref = useRef(null);
 
   useEffect(() => {
-    // Initialisation de LocomotiveScroll
-    const locoScroll = new LocomotiveScroll({
-      el: scrollContainerRef.current,
-      smooth: true,
-      direction: "horizontal", // Scroll horizontal uniquement
-      smartphone: {
-        smooth: false, // Désactiver pour mobile
-        direction: "vertical", // Scroll natif
-      },
-      tablet: {
-        smooth: false, // Désactiver pour tablette
-        direction: "vertical", // Scroll natif
-      },
-    });
     
-
+    if (!locoScroll || !animWrapRef.current || !animWrap2Ref.current) return;
+   
     // Synchroniser ScrollTrigger avec LocomotiveScroll
     locoScroll.on("scroll", ScrollTrigger.update);
 
@@ -65,11 +59,6 @@ const ScrollSection = () => {
       scroller: scrollContainerRef.current
     });
 
-    // Définir les couleurs de fond et de texte des sections
-    gsap.set('section', { 
-      backgroundColor: (index, target) => target.getAttribute('data-bgcolor'),
-      color: (index, target) => target.getAttribute('data-textcolor')
-    });
 
     // Animation horizontale pour l'élément anim-wrap
     const fakeVertical = gsap.to(animWrapRef.current, {
@@ -124,15 +113,17 @@ const ScrollSection = () => {
 
     // Cleanup lorsque le composant est démonté
     return () => {
-      locoScroll.destroy();
       ScrollTrigger.kill();
+      if (locoScroll) {
+        locoScroll.destroy();
+      }
     };
-  }, []);
+  }, [locoScroll, animWrapRef, animWrap2Ref]);
 
  
   
   return (
-    <div ref={scrollContainerRef} data-scroll-container>
+    <div className="scroll-container" data-scroll-container>
       <div className="content">
         <section className='w-[100vw]' id='accueil'>
           <Hero/>
@@ -224,7 +215,7 @@ const ScrollSection = () => {
         </div>
       </section>
 
-        <section className='mt-[60px] w-[100vw]'  id='Contact' >
+        <section className='mt-[60px] w-[100vw]'  id='contact' >
          <Contact/>
         </section>
       </div>

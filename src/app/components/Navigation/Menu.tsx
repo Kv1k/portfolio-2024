@@ -7,6 +7,7 @@ import {gsap} from "gsap";
 import {useGSAP} from "@gsap/react";
 import Image from "next/image";
 import Logo from "../../../../public/black-logo.png";
+import { useLocoScroll } from "../../provider/LocoScrollProvider";
 
 gsap.registerPlugin(useGSAP);
 
@@ -19,7 +20,7 @@ const menuLinks = [
 ];
 
 
-const Menu = ({ locoScroll }) => {
+const Menu = () => {
   const container = useRef();
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,21 +58,18 @@ const Menu = ({ locoScroll }) => {
     }
   }, [isMenuOpen])
 
-  const handleMenuClick = (path) => {
-    // Faites défiler la page vers la section désirée avec locoScroll
-    const targetElement = document.querySelector(path); // Sélectionner l'élément de la section
-    if (targetElement) {
-      // Utiliser locoScroll pour faire défiler
-      locoScroll.current.scrollTo(targetElement, {
-        offset: 0,
-        duration: 1000,
-        easing: "easeInOutQuad", // ou l'easing que vous souhaitez
-      });
-    }
+  const { locoScroll } = useLocoScroll();
 
-    // Fermer le menu après un clic
+  const handleMenuClick = (path) => {
+    if (locoScroll) {
+      locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
+    } else {
+      console.warn("locoScroll is not initialized yet");
+    }
     setIsMenuOpen(false);
   };
+  
+ 
 
   return (
     <div className='menu-container' ref={container}>
@@ -102,8 +100,8 @@ const Menu = ({ locoScroll }) => {
               <div className="menu-links">
                 {menuLinks.map((link,index)=>(
                   <div className="menu-link-item" key={index}>
-                    <div className="menu-link-item-holder" onClick={toggleMenu}>
-                      <Link href={link.path} className='menu-link'>
+                    <div className="menu-link-item-holder" onClick={()=>{handleMenuClick(link.path);}}>
+                      <Link href="" className='menu-link'>
                         {link.label}
                       </Link>
                     </div>

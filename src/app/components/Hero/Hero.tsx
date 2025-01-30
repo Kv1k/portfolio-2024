@@ -24,7 +24,7 @@ function Hero() {
         </div>
 
        
-        <div className="hidden absolute bottom-4 right-8 font-normal lg:flex items-center space-x-2 text-[14px] michroma-text">
+        <div className="hidden absolute bottom-4 right-8 font-normal lg:flex items-center space-x-2 text-[12px] michroma-text">
           <span className='mr-3'>Scroller pour commencer le voyage</span>
           <span className="animate-bounceHorizontal"> <BsArrowRight className='w-[1.4rem] h-[1.2rem]'/></span> 
         </div>
