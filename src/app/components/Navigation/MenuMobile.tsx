@@ -7,7 +7,6 @@ import {gsap} from "gsap";
 import {useGSAP} from "@gsap/react";
 import Image from "next/image";
 import Logo from "../../../../public/black-logo.png";
-import { useLocoScroll } from "../../context/LocoScrollProvider";
 import "../../globals.css";
 
 gsap.registerPlugin(useGSAP);
@@ -21,11 +20,10 @@ const menuLinks = [
 ];
 
 
-const Menu = () => {
+const MenuMobile = () => {
   const container = useRef();
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
 
   const tl = useRef();
 
@@ -60,24 +58,8 @@ const Menu = () => {
     }
   }, [isMenuOpen])
 
-  const { locoScroll } = useLocoScroll();
 
-  const handleMenuClick = (path) => {
-    if (locoScroll && isDesktop) {
-      locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
-    } else {
-      console.warn("Locomotive Scroll non disponible, utilisation du scroll natif...");
-      const targetElement = document.querySelector(path);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      } else {
-        console.error(`Élément introuvable pour le chemin : ${path}`);
-      }
-    }
   
-    setIsMenuOpen(false);
-  };
- 
 
   return (
     <div className='menu-container' ref={container}>
@@ -108,8 +90,8 @@ const Menu = () => {
               <div className="menu-links">
                 {menuLinks.map((link,index)=>(
                   <div className="menu-link-item" key={index}>
-                    <div className="menu-link-item-holder" onClick={()=>{handleMenuClick(link.path);}}>
-                      <Link href="" className='menu-link'>
+                    <div className="menu-link-item-holder" onClick={()=>{toggleMenu()}}>
+                      <Link href={link.path} className='menu-link'>
                         {link.label}
                       </Link>
                     </div>
@@ -146,4 +128,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default MenuMobile

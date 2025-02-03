@@ -13,7 +13,7 @@ import SudalysImg from "../../../public/sudalys.png"
 import AngovaImg from "../../../public/auto-ecole.jpg"
 import H2NImg from "../../../public/h2n.jpg"
 import BeLoungeImg from "../../../public/belounge.png"
-import { useLocoScroll } from '../provider/LocoScrollProvider';
+import { useLocoScroll } from '../context/LocoScrollProvider';
 
 gsap.registerPlugin(ScrollTrigger);
 

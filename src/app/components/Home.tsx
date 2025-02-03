@@ -2,15 +2,18 @@
 import React, { useEffect } from 'react';
 import ScrollSection from './ScrollSection';
 import MobileSection from './MobileSection';
+import ResponsiveNav from './Navigation/ResponsiveNav';
+import { LocoScrollProvider } from '../context/LocoScrollProvider';
 
-const Home = () => {
+const Home = () => {      
+  const isDesktop = window.innerWidth >= 1024;
+
   useEffect(() => {
     const handleResize = () => {
-      const isDesktop = window.innerWidth >= 1024;
-
+      const newIsDesktop = window.innerWidth >= 1024;
       // Sauvegarder l'état de l'écran dans le localStorage
       const previousScreenType = localStorage.getItem('screenType');
-      const currentScreenType = isDesktop ? 'desktop' : 'mobile';
+      const currentScreenType = newIsDesktop ? 'desktop' : 'mobile';
 
       // Si le type d'écran change, rafraîchir la page
       if (previousScreenType && previousScreenType !== currentScreenType) {
@@ -35,12 +38,19 @@ const Home = () => {
 
   return (
     <>
-      <div className='hidden lg:block' id='desktop-section'>
-        <ScrollSection />
-      </div>
-      <div className='block lg:hidden' id='mobile-section'>
-        <MobileSection />
-      </div>
+      {isDesktop ? (
+        <div id='desktop-section'>
+          <LocoScrollProvider>
+            <ResponsiveNav />
+            <ScrollSection />
+          </LocoScrollProvider>
+        </div>
+      ) : (
+        <div id='mobile-section'>
+          <ResponsiveNav />
+          <MobileSection />
+        </div>
+      )}
     </>
   );
 };
