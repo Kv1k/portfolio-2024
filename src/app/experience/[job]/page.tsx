@@ -1,7 +1,6 @@
 "use client";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Moi from "../../../../public/moi2.jpg";
 import "./job.css";
 import { gsap } from "gsap";
 import { useEffect } from "react";
@@ -137,7 +136,6 @@ export default function JobPage({ params }) {
       cards: document.querySelectorAll(".section_bg_card"),
     };
 
-    const isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
     const init = () => {
         // Masquer et définir les styles des cartes initialement
@@ -160,13 +158,15 @@ export default function JobPage({ params }) {
     };
       
 
-    const moveCards = (event) => {
+    const moveCards = (event: { touches: {
+        clientX: any; clientY: any; 
+}[]; clientX: any; clientY: any; }) => {
       const x = event.touches ? event.touches[0].clientX : event.clientX;
       const y = event.touches ? event.touches[0].clientY : event.clientY;
 
       const strenght = 8;
-      let xPos = (x / window.innerWidth - 0.5) * 2,
-          yPos = (y / window.innerHeight - 0.5) * 2;
+      const xPos = (x / window.innerWidth - 0.5) * 2;
+      const yPos = (y / window.innerHeight - 0.5) * 2;
 
       gsap.to(hero.cards, {
         duration: 0.64,

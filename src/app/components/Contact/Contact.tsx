@@ -9,12 +9,12 @@ function Contact() {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
 
-    const handleChange = (e) => {
+    const handleChange = (e: { target: { name: any; value: any; }; }) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         setLoading(true);
         setSuccess('');
@@ -36,7 +36,7 @@ function Contact() {
             } else {
                 setError(data.error || "Quelque chose s'est mal passé");
             }
-        } catch (err) {
+        } catch {
             setError("Quelque chose s'est mal passé");
         } finally {
             setLoading(false);
@@ -95,7 +95,7 @@ function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Message"
-                        rows="5"
+                        rows={5}
                         className="p-2 border !text-black"
                         required
                     />

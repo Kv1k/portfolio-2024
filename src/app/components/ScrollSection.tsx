@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import Hero from './Hero/Hero';
 import VerticalTicker from './VerticalTicker/VerticalTicker';
@@ -61,7 +60,7 @@ const ScrollSection = () => {
 
 
     // Animation horizontale pour l'élément anim-wrap
-    const fakeVertical = gsap.to(animWrapRef.current, {
+    gsap.to(animWrapRef.current, {
       scrollTrigger: {
         trigger: '.vertical',
         start: 'left left',
@@ -77,7 +76,7 @@ const ScrollSection = () => {
     });
 
     // Animation horizontale pour l'élément anim-wrap
-    const fakeVertical2 = gsap.to(animWrap2Ref.current, {
+    gsap.to(animWrap2Ref.current, {
       scrollTrigger: {
         trigger: '.vertical2',
         start: 'left left',
@@ -93,7 +92,7 @@ const ScrollSection = () => {
     });
 
     // Animation fakePin pour le pinning simulé
-    const fakePin = gsap.to('.fakePin', {
+    gsap.to('.fakePin', {
       y: animWrapRef.current.scrollHeight - window.innerHeight+120,
       ease: 'none',
       scrollTrigger: {
