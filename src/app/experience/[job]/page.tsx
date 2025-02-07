@@ -142,96 +142,97 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
   
   const experience = experiences[jobId];
   useEffect(() => {
-    const hero = {
-      section: document.querySelector(".section"),
-      cards: document.querySelectorAll(".section_bg_card"),
-    };
+    if (typeof window !== "undefined") {
+        const hero = {
+        section: document.querySelector(".section"),
+        cards: document.querySelectorAll(".section_bg_card"),
+        };
 
 
-    const init = () => {
-        // Masquer et définir les styles des cartes initialement
-        hero.cards.forEach((card, index) => {
-          gsap.set(card, {
-            zIndex: -index,
-            clipPath: "inset(100% round 4px)",
-            opacity: 0, // Masquer les cartes
-            visibility: "hidden", // Les rendre invisibles
-          });
-        });
-      
-        // Ajuster les profondeurs pour certaines cartes
-        gsap.set([hero.cards[3], hero.cards[4]], { z: -2, zIndex: -15 });
-        gsap.set([hero.cards[5], hero.cards[7], hero.cards[8], hero.cards[10]], {
-          z: -10,
-          zIndex: -10,
-        });
-        gsap.set([hero.cards[6], hero.cards[9]], { z: -10, zIndex: -5 });
-    };
-      
-
-    const moveCards = (event: MouseEvent | TouchEvent) => {
-        let x: number, y: number;
-        if ("touches" in event) {
-            x = event.touches[0].clientX;
-            y = event.touches[0].clientY;
-        } else {
-            x = event.clientX;
-            y = event.clientY;
-        }
-      const strenght = 8;
-      const xPos = (x / window.innerWidth - 0.5) * 2;
-      const yPos = (y / window.innerHeight - 0.5) * 2;
-
-      gsap.to(hero.cards, {
-        duration: 0.64,
-        rotationY: xPos * strenght,
-        rotateX: -yPos * strenght,
-
-        stagger: 0.08,
-      })
-    };
-
-    const onHover = (event: { target: gsap.TweenTarget; type: string; }) => {
-      gsap.to(event.target,{
-        duration: 1.2,
-        z: event.type === "mouseenter" ? 40 : 0,
-        ease: 'expo.out',
-      })
-    };
-
-    const introAnimation = () => {
-        const tl = gsap.timeline({defaults: {duration: 1.5, ease:'power4.inOut'} });
-        // Animation pour révéler les cartes
-        tl.to(hero.cards, {
-            z: 0, // Amener les cartes à la profondeur correcte
-            clipPath: "inset(10% round 4px)", // Modifier leur clipPath
-            opacity: 1, // Les rendre visibles
-            visibility: "visible", // Supprimer `hidden`
-            stagger: {
-            each: 0.08, // Décalage progressif
-            grid: "auto",
-            from: "center",
-            },
-        });
-        tl.call(()=> {
-            hero.cards.forEach((card)=> {
-                card.addEventListener("mouseenter",onHover);
-                card.addEventListener("mouseleave",onHover);
-
+        const init = () => {
+            // Masquer et définir les styles des cartes initialement
+            hero.cards.forEach((card, index) => {
+            gsap.set(card, {
+                zIndex: -index,
+                clipPath: "inset(100% round 4px)",
+                opacity: 0, // Masquer les cartes
+                visibility: "hidden", // Les rendre invisibles
             });
-            // @ts-expect-error je ne sais pas
-            hero.section?.addEventListener('mousemove',moveCards)
-            // @ts-expect-error je ne sais pas
-            hero.section?.addEventListener('touchmove',moveCards)
+            });
+        
+            // Ajuster les profondeurs pour certaines cartes
+            gsap.set([hero.cards[3], hero.cards[4]], { z: -2, zIndex: -15 });
+            gsap.set([hero.cards[5], hero.cards[7], hero.cards[8], hero.cards[10]], {
+            z: -10,
+            zIndex: -10,
+            });
+            gsap.set([hero.cards[6], hero.cards[9]], { z: -10, zIndex: -5 });
+        };
+        
 
+        const moveCards = (event: MouseEvent | TouchEvent) => {
+            let x: number, y: number;
+            if ("touches" in event) {
+                x = event.touches[0].clientX;
+                y = event.touches[0].clientY;
+            } else {
+                x = event.clientX;
+                y = event.clientY;
+            }
+        const strenght = 8;
+        const xPos = (x / window.innerWidth - 0.5) * 2;
+        const yPos = (y / window.innerHeight - 0.5) * 2;
+
+        gsap.to(hero.cards, {
+            duration: 0.64,
+            rotationY: xPos * strenght,
+            rotateX: -yPos * strenght,
+
+            stagger: 0.08,
         })
-    };
+        };
 
-    // Initialise les comportements
-    init();
-   
-    introAnimation();
+        const onHover = (event: { target: gsap.TweenTarget; type: string; }) => {
+        gsap.to(event.target,{
+            duration: 1.2,
+            z: event.type === "mouseenter" ? 40 : 0,
+            ease: 'expo.out',
+        })
+        };
 
+        const introAnimation = () => {
+            const tl = gsap.timeline({defaults: {duration: 1.5, ease:'power4.inOut'} });
+            // Animation pour révéler les cartes
+            tl.to(hero.cards, {
+                z: 0, // Amener les cartes à la profondeur correcte
+                clipPath: "inset(10% round 4px)", // Modifier leur clipPath
+                opacity: 1, // Les rendre visibles
+                visibility: "visible", // Supprimer `hidden`
+                stagger: {
+                each: 0.08, // Décalage progressif
+                grid: "auto",
+                from: "center",
+                },
+            });
+            tl.call(()=> {
+                hero.cards.forEach((card)=> {
+                    card.addEventListener("mouseenter",onHover);
+                    card.addEventListener("mouseleave",onHover);
+
+                });
+                // @ts-expect-error je ne sais pas
+                hero.section?.addEventListener('mousemove',moveCards)
+                // @ts-expect-error je ne sais pas
+                hero.section?.addEventListener('touchmove',moveCards)
+
+            })
+        };
+
+        // Initialise les comportements
+        init();
+    
+        introAnimation();
+    }
     
   }, []);
 

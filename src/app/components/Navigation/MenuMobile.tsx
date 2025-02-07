@@ -51,10 +51,12 @@ const MenuMobile = () => {
   )
 
   useEffect(() => {
-    if(isMenuOpen && tl.current){
-      tl.current.play();
-    }else if (!isMenuOpen && tl.current) {
-      tl.current.reverse();
+    if (typeof window !== "undefined") {
+      if(isMenuOpen && tl.current){
+        tl.current.play();
+      }else if (!isMenuOpen && tl.current) {
+        tl.current.reverse();
+      }
     }
   }, [isMenuOpen])
 

@@ -28,33 +28,35 @@ export const LocoScrollProvider: React.FC<LocoScrollProviderProps> = ({ children
   const setScrollContRef = (ref: HTMLElement) => (scrollContainerRef.current = ref);
 
   useEffect(() => {
-    if (!scrollContainerRef.current) return;
+    if (typeof window !== "undefined") {
+      if (!scrollContainerRef.current) return;
 
-    // Initialisation de LocomotiveScroll
-    const locoScroll = new LocomotiveScroll({
-      el: scrollContainerRef.current,
-      smooth: true,
-      direction: "horizontal", // Scroll horizontal uniquement
-      smartphone: {
-        smooth: false, // Désactiver pour mobile
-        direction: "vertical", // Scroll natif
-      },
-      tablet: {
-        smooth: false, // Désactiver pour tablette
-        direction: "vertical", // Scroll natif
-        breakpoint:1024
-      },
-    });
+      // Initialisation de LocomotiveScroll
+      const locoScroll = new LocomotiveScroll({
+        el: scrollContainerRef.current,
+        smooth: true,
+        direction: "horizontal", // Scroll horizontal uniquement
+        smartphone: {
+          smooth: false, // Désactiver pour mobile
+          direction: "vertical", // Scroll natif
+        },
+        tablet: {
+          smooth: false, // Désactiver pour tablette
+          direction: "vertical", // Scroll natif
+          breakpoint:1024
+        },
+      });
 
-    // Synchroniser ScrollTrigger avec LocomotiveScroll
-    setLocoScroll(locoScroll);
+      // Synchroniser ScrollTrigger avec LocomotiveScroll
+      setLocoScroll(locoScroll);
 
-    
+      
 
-    // Cleanup lorsque le composant est démonté
-    return () => {
-      locoScroll.destroy();
-    };
+      // Cleanup lorsque le composant est démonté
+      return () => {
+        locoScroll.destroy();
+      };
+    }
   }, []);
 
   return (

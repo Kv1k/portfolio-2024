@@ -7,25 +7,27 @@ function HorizontalTicker({ type }: { type: string }) {
   const [animationDuration, setAnimationDuration] = useState("0s");
 
   useEffect(() => {
-    const calculateAnimationDuration = () => {
-      if (sliderRef.current) {
-        const itemWidth = sliderRef.current.querySelector("li")?.clientWidth;
-        const itemCount = sliderRef.current.children.length;
-        if (itemWidth !== undefined) {
-          const totalWidth = itemWidth * itemCount;
-          const time = totalWidth / 120; // 200px/sec (vitesse ajustable)
-          setAnimationDuration(`${time}s`);
+    if (typeof window !== "undefined") {
+      const calculateAnimationDuration = () => {
+        if (sliderRef.current) {
+          const itemWidth = sliderRef.current.querySelector("li")?.clientWidth;
+          const itemCount = sliderRef.current.children.length;
+          if (itemWidth !== undefined) {
+            const totalWidth = itemWidth * itemCount;
+            const time = totalWidth / 120; // 200px/sec (vitesse ajustable)
+            setAnimationDuration(`${time}s`);
+          }
+
         }
+      };
 
-      }
-    };
+      calculateAnimationDuration();
+      window.addEventListener("resize", calculateAnimationDuration);
 
-    calculateAnimationDuration();
-    window.addEventListener("resize", calculateAnimationDuration);
-
-    return () => {
-      window.removeEventListener("resize", calculateAnimationDuration);
-    };
+      return () => {
+        window.removeEventListener("resize", calculateAnimationDuration);
+      };
+    }
   }, []);
 
   // Définir les données en fonction de la prop "type"

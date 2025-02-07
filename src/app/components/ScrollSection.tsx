@@ -22,112 +22,114 @@ const ScrollSection = () => {
 
   // Utiliser useEffect pour affecter les références
   useEffect(() => {
-    const scrollContainer = document.querySelector(".scroll-container");
-    if (scrollContainer instanceof HTMLElement) {
-      setScrollContRef(scrollContainer)
+    if (typeof document !== "undefined") {
+      const scrollContainer = document.querySelector(".scroll-container");
+      if (scrollContainer instanceof HTMLElement) {
+        setScrollContRef(scrollContainer)
+      }
     }
-
   }, [setScrollContRef]);
 
     const animWrapRef =  useRef<HTMLDivElement>(null);
     const animWrap2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!locoScroll || !animWrapRef.current || !animWrap2Ref.current) return;
     
-    if (!locoScroll || !animWrapRef.current || !animWrap2Ref.current) return;
-   
-    // Synchroniser ScrollTrigger avec LocomotiveScroll
-    locoScroll.on("scroll", ScrollTrigger.update);
+      // Synchroniser ScrollTrigger avec LocomotiveScroll
+      locoScroll.on("scroll", ScrollTrigger.update);
 
-    // Setup de ScrollTrigger pour gérer le défilement horizontal
-    ScrollTrigger.scrollerProxy(scrollContainerRef.current, {
-      scrollLeft(value) {
-        if (value !== undefined) {
-      return locoScroll.scrollTo(value, {
-        offset: 0,  // Décalage en pixels
-        duration: 1 // Durée du défilement en secondes
+      // Setup de ScrollTrigger pour gérer le défilement horizontal
+      ScrollTrigger.scrollerProxy(scrollContainerRef.current, {
+        scrollLeft(value) {
+          if (value !== undefined) {
+        return locoScroll.scrollTo(value, {
+          offset: 0,  // Décalage en pixels
+          duration: 1 // Durée du défilement en secondes
+        });
+      }
+      // @ts-expect-error je ne sais pas 
+      return locoScroll.scroll.instance.scroll.x;
+        },
+        getBoundingClientRect() {
+          return {
+            left: 0,
+            top: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+          };
+        },
+        pinType: scrollContainerRef.current?.style.transform ? "transform" : "fixed"
       });
+
+      // Configuration des valeurs par défaut pour ScrollTrigger
+      ScrollTrigger.defaults({
+        scroller: scrollContainerRef.current
+      });
+
+
+      // Animation horizontale pour l'élément anim-wrap
+      gsap.to(animWrapRef.current, {
+        scrollTrigger: {
+          trigger: '.vertical',
+          start: 'left left',
+          end: `+=${animWrapRef.current.scrollHeight+120}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: true,
+          horizontal: true,
+          invalidateOnRefresh: true
+        },
+        y: `-${animWrapRef.current.scrollHeight - window.innerHeight+120}`,
+        ease: 'none'
+      });
+
+      // Animation horizontale pour l'élément anim-wrap
+      gsap.to(animWrap2Ref.current, {
+        scrollTrigger: {
+          trigger: '.vertical2',
+          start: 'left left',
+          end: `+=${animWrap2Ref.current.scrollHeight}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: true,
+          horizontal: true,
+          invalidateOnRefresh: true
+        },
+        y: `-${animWrap2Ref.current.scrollHeight - window.innerHeight}`,
+        ease: 'none'
+      });
+
+      // Animation fakePin pour le pinning simulé
+      gsap.to('.fakePin', {
+        y: animWrapRef.current.scrollHeight - window.innerHeight+120,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.vertical',
+          start: 'left left',
+          end: `+=${animWrapRef.current.scrollHeight+120}`,
+          horizontal: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        
+        }
+      });
+
+      // Rafraîchissement de LocomotiveScroll lorsque ScrollTrigger se rafraîchit
+      ScrollTrigger.addEventListener("refresh", () => {
+        locoScroll.update();
+      }); 
+      ScrollTrigger.refresh();
+
+      // Cleanup lorsque le composant est démonté
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        if (locoScroll) {
+          locoScroll.destroy();
+        }
+      };
     }
-    // @ts-expect-error je ne sais pas 
-    return locoScroll.scroll.instance.scroll.x;
-      },
-      getBoundingClientRect() {
-        return {
-          left: 0,
-          top: 0,
-          width: window.innerWidth,
-          height: window.innerHeight
-        };
-      },
-      pinType: scrollContainerRef.current?.style.transform ? "transform" : "fixed"
-    });
-
-    // Configuration des valeurs par défaut pour ScrollTrigger
-    ScrollTrigger.defaults({
-      scroller: scrollContainerRef.current
-    });
-
-
-    // Animation horizontale pour l'élément anim-wrap
-    gsap.to(animWrapRef.current, {
-      scrollTrigger: {
-        trigger: '.vertical',
-        start: 'left left',
-        end: `+=${animWrapRef.current.scrollHeight+120}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: true,
-        horizontal: true,
-        invalidateOnRefresh: true
-      },
-      y: `-${animWrapRef.current.scrollHeight - window.innerHeight+120}`,
-      ease: 'none'
-    });
-
-    // Animation horizontale pour l'élément anim-wrap
-    gsap.to(animWrap2Ref.current, {
-      scrollTrigger: {
-        trigger: '.vertical2',
-        start: 'left left',
-        end: `+=${animWrap2Ref.current.scrollHeight}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: true,
-        horizontal: true,
-        invalidateOnRefresh: true
-      },
-      y: `-${animWrap2Ref.current.scrollHeight - window.innerHeight}`,
-      ease: 'none'
-    });
-
-    // Animation fakePin pour le pinning simulé
-    gsap.to('.fakePin', {
-      y: animWrapRef.current.scrollHeight - window.innerHeight+120,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.vertical',
-        start: 'left left',
-        end: `+=${animWrapRef.current.scrollHeight+120}`,
-        horizontal: true,
-        scrub: true,
-        invalidateOnRefresh: true,
-       
-      }
-    });
-
-    // Rafraîchissement de LocomotiveScroll lorsque ScrollTrigger se rafraîchit
-    ScrollTrigger.addEventListener("refresh", () => {
-      locoScroll.update();
-    }); 
-    ScrollTrigger.refresh();
-
-    // Cleanup lorsque le composant est démonté
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      if (locoScroll) {
-        locoScroll.destroy();
-      }
-    };
   }, [locoScroll, animWrapRef, animWrap2Ref]);
 
  

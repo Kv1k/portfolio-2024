@@ -8,26 +8,28 @@ function VerticalTicker({ type }: { type: string }) {
   const [animationDuration, setAnimationDuration] = useState("0s");
 
   useEffect(() => {
-    const calculateAnimationDuration = () => {
-      if (sliderRef.current) {
-        const lineHeight = sliderRef.current.querySelector("li")?.clientHeight;
-        const itemCount = sliderRef.current.children.length;
-        if (lineHeight !== undefined) {
-          const totalHeight = lineHeight * itemCount;
-          const time = totalHeight / 400; // 400px/sec (vitesse ajustable)
-          setAnimationDuration(`${time}s`);
+    if (typeof window !== "undefined") {
+      const calculateAnimationDuration = () => {
+        if (sliderRef.current) {
+          const lineHeight = sliderRef.current.querySelector("li")?.clientHeight;
+          const itemCount = sliderRef.current.children.length;
+          if (lineHeight !== undefined) {
+            const totalHeight = lineHeight * itemCount;
+            const time = totalHeight / 400; // 400px/sec (vitesse ajustable)
+            setAnimationDuration(`${time}s`);
+          }
+
+        
         }
+      };
 
-       
-      }
-    };
+      calculateAnimationDuration();
+      window.addEventListener("resize", calculateAnimationDuration);
 
-    calculateAnimationDuration();
-    window.addEventListener("resize", calculateAnimationDuration);
-
-    return () => {
-      window.removeEventListener("resize", calculateAnimationDuration);
-    };
+      return () => {
+        window.removeEventListener("resize", calculateAnimationDuration);
+      };
+    }
   }, []);
 
   // Définir les données en fonction de la prop "type"
