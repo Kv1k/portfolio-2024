@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import "./horizontalTicker.css"
-function HorizontalTicker({ type }) {
+function HorizontalTicker({ type }: { type: string }) {
   const sliderRef = useRef(null);
   const [animationDuration, setAnimationDuration] = useState("0s");
 
