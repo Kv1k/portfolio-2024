@@ -25,7 +25,7 @@ const MenuMobile = () => {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const tl = useRef();
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

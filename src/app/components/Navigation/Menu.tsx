@@ -27,8 +27,8 @@ const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
 
-  const tl = useRef();
-
+  const tl = useRef<gsap.core.Timeline | null>(null);
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
    
