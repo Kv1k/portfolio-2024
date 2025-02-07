@@ -104,7 +104,7 @@ export function ParticlesContainer() {
           <Particles
             className="mt-[60px] h-[92%] w-full absolute translate-z-0"
             id="tsparticles"
-            // @ts-expect-error
+            // @ts-expect-error je ne sais pas 
             options={options}
           />
         );
