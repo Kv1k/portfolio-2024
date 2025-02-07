@@ -3,17 +3,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./horizontalTicker.css"
 function HorizontalTicker({ type }: { type: string }) {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLUListElement | null>(null);
   const [animationDuration, setAnimationDuration] = useState("0s");
 
   useEffect(() => {
     const calculateAnimationDuration = () => {
       if (sliderRef.current) {
-        const itemWidth = sliderRef.current.querySelector("li").clientWidth;
+        const itemWidth = sliderRef.current.querySelector("li")?.clientWidth;
         const itemCount = sliderRef.current.children.length;
-        const totalWidth = itemWidth * itemCount;
-        const time = totalWidth / 120; // 200px/sec (vitesse ajustable)
-        setAnimationDuration(`${time}s`);
+        if (itemWidth !== undefined) {
+          const totalWidth = itemWidth * itemCount;
+          const time = totalWidth / 120; // 200px/sec (vitesse ajustable)
+          setAnimationDuration(`${time}s`);
+        }
+
       }
     };
 
