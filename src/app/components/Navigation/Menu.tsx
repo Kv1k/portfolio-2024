@@ -53,16 +53,16 @@ const Menu = () => {
   )
 
   useEffect(() => {
-    if(isMenuOpen){
+    if(isMenuOpen && tl.current){
       tl.current.play();
-    }else{
+    }else if (!isMenuOpen && tl.current) {
       tl.current.reverse();
     }
   }, [isMenuOpen])
 
   const { locoScroll } = useLocoScroll();
 
-  const handleMenuClick = (path) => {
+  const handleMenuClick = (path: string) => {
     if (locoScroll && isDesktop) {
       locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
     } else {
