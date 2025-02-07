@@ -1,22 +1,31 @@
 "use client";
 
-import React, { createContext, useContext, useRef, useEffect, useState } from "react";
+import React, { createContext, useContext, useRef, useEffect, useState, ReactNode } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LocoScrollContext = createContext(null);
+interface LocoScrollContextType {
+  locoScroll: LocomotiveScroll | null;  // locoScroll peut être un objet LocomotiveScroll ou null
+  scrollContainerRef: React.RefObject<HTMLElement>;
+  setScrollContRef: (ref: HTMLElement) => void;
+}
 
-export const LocoScrollProvider = ({ children }) => {
-  const scrollContainerRef = useRef(null);
-  const [locoScroll, setLocoScroll] = useState(null);
+const LocoScrollContext = createContext<LocoScrollContextType | null>(null);
 
+interface LocoScrollProviderProps {
+  children: ReactNode;  // enfants peuvent être de n'importe quel type React valide
+}
+export const LocoScrollProvider: React.FC<LocoScrollProviderProps> = ({ children }) => {
+
+  const scrollContainerRef = useRef<HTMLElement | null>(null);
+  const [locoScroll, setLocoScroll] = useState<LocomotiveScroll | null>(null);
 
   // Fonction pour synchroniser le scroll dans les composants enfants
  
-  const setScrollContRef = (ref) => (scrollContainerRef.current = ref);
+  const setScrollContRef = (ref: HTMLElement) => (scrollContainerRef.current = ref);
 
   useEffect(() => {
     if (!scrollContainerRef.current) return;
@@ -33,6 +42,7 @@ export const LocoScrollProvider = ({ children }) => {
       tablet: {
         smooth: false, // Désactiver pour tablette
         direction: "vertical", // Scroll natif
+        breakpoint:1024
       },
     });
 

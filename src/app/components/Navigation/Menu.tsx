@@ -63,7 +63,7 @@ const Menu = () => {
   const { locoScroll } = useLocoScroll();
 
   const handleMenuClick = (path: string) => {
-    if (locoScroll && isDesktop) {
+    if (locoScroll && typeof locoScroll.scrollTo === "function" && isDesktop) {
       locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
     } else {
       console.warn("Locomotive Scroll non disponible, utilisation du scroll natif...");
