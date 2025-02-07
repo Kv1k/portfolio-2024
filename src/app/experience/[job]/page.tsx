@@ -112,8 +112,8 @@ const experiences = {
   },
 };
 
-export default function JobPage({ params }) {
-    const { job } = use(params); 
+export default function JobPage({ params }: { params: Promise<{ job: string }> }) {
+    const { job } = use(params);
     const jobId = parseInt(job, 10); 
 
   // Vérifier si l'expérience existe sinon rediriger vers 404
@@ -158,12 +158,15 @@ export default function JobPage({ params }) {
     };
       
 
-    const moveCards = (event: { touches: {
-        clientX: any; clientY: any; 
-}[]; clientX: any; clientY: any; }) => {
-      const x = event.touches ? event.touches[0].clientX : event.clientX;
-      const y = event.touches ? event.touches[0].clientY : event.clientY;
-
+    const moveCards = (event: MouseEvent | TouchEvent) => {
+        let x: number, y: number;
+        if ("touches" in event) {
+            x = event.touches[0].clientX;
+            y = event.touches[0].clientY;
+        } else {
+            x = event.clientX;
+            y = event.clientY;
+        }
       const strenght = 8;
       const xPos = (x / window.innerWidth - 0.5) * 2;
       const yPos = (y / window.innerHeight - 0.5) * 2;
