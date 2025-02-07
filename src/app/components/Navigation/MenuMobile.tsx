@@ -113,7 +113,7 @@ const MenuMobile = () => {
                 </a>
               </div>
               <div className="menu-info-col">
-                <p>kamil.nachat@hotmail.com</p>
+                <p>kamil.nachat@outlook.fr</p>
                 <p>07 83 97 19 32</p>
               </div>
             </div>

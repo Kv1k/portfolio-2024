@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image"
 import SudalysImg from "../../../../public/sudalys.png"
-import AngovaImg from "../../../../public/auto-ecole.jpg"
+import AngovaImg from "../../../../public/auto-ecole.gif"
 import H2NImg from "../../../../public/h2n.jpg"
 import BeLoungeImg from "../../../../public/belounge.png"
 function Experiences() {

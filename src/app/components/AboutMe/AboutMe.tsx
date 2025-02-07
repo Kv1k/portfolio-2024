@@ -15,7 +15,7 @@ function AboutMe() {
     <>
       <div className="inner-section h-[100vh] lg:h-[98vh] michroma-text">
                  
-        <div className='h-[50%] lg:h-[64%] mt-10 lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[35vw] md:pl-[45vw]'>
+        <div className='h-[50%] lg:h-[64%] mt-10 lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[35vw] md:pl-[32vw]'>
           <div className="w-[90%] md:w-[60%] lg:w-[270px] h-fit lg:max-h-[390px] mb-[30px]" >
             <Image src={Moi} alt='' className='w-[100%] h-auto'/>
           </div>
@@ -25,15 +25,34 @@ function AboutMe() {
         </div>
       
         <h3 className="absolute mt-[20px] left-[6vw] lg:left-[4vw] p-0 text-[16px]">
-          À propos de moi
+          A propos de moi
         </h3>
-        <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[45vw] mt-[13vh] lg:mt-[25px] '>
         
-          <p className='w-[88%] lg:w-[323px] h-[180px] text-[12px] whitespace-normal break-words'>
-          is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many 
+        <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[32vw] mt-[13vh] lg:mt-[25px] '>
+        
+          <p className='w-[88%] lg:w-[400px] h-[180px] text-[11px] whitespace-normal break-words'>
+          Salut ! Moi, c’est Kamil, un jeune Montpelliérain qui vient d’obtenir son Master en Architecture Logicielle à Epitech. <br />
+          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys, mais j’ai aussi une appétence pour l’UX/UI design. 
+          C’est d’ailleurs par le design que j’ai découvert l’informatique !<br /> J’ai un parcours assez atypique que je me ferais une joie de vous raconter lors d’un entretien.
+          <br/>
+          {/* Je suis vraiment heureux d’avoir découvert l’informatique il y a maintenant cinq ans, car aujourd’hui, c’est clairement une vocation. 
+          Ce qui me motive le plus, c’est le côté challengeant de ce domaine et de la curiosité dont il faut faire preuve pour trouver des solutions à la fois adaptées et efficiente.
+          Au fil des années, j’ai eu l’occasion de travailler sur des projets professionnels et entrepreneuriaux qui m’ont marqué et dont je suis fier. 
+          Ce qui me touche particulièrement, c’est de voir à quel point mes compétences peuvent faciliter la vie des gens, que ce soit dans leur travail ou leur quotidien. */}
+
           </p>
-          <p className='ml-0 mt-8 lg:mt-0 lg:ml-[60px] w-[88%] lg:w-[323px]  h-[180px] text-[12px] whitespace-normal break-words'>
-          is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 
+          <p className='ml-0 mt-8 lg:mt-0 lg:ml-[60px] w-[88%] lg:w-[400px]  h-[180px] text-[11px] whitespace-normal break-words'>
+            En-dehors du pro, je suis un passionné et un grand curieux. <br />
+            Ce que j’aime par-dessus tout, c’est surfer… <br />
+            Pas sur Internet, mais bien sur les vagues ! <br />
+            Et quand la mer est plate (souvent en Méditerranée), je pars faire une balade en paddle avec mon chien. <br />
+            Je suis aussi passionné par la musique : je produis de la house et j’en mixe.<br />
+            Pour le fun, je fais aussi du montage vidéo, mais ça m’est aussi arrivé d’en faire pour des associations. 
+            <br />   
+            {/* Vous l’avez compris, je suis un vrai touche-à-tout, avide de découvertes et d’aventures. 
+            Peut-être que la prochaine se fera avec vous ? 
+            Actuellement, je suis à la recherche d’un CDI en tant que développeur fullstack, prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée. 
+            Si mon profil vous intéresse, discutons autour d’un café virtuel ! */}
           </p>
         </div>
         
