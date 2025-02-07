@@ -13,21 +13,22 @@ import AngovaImg from "../../../public/auto-ecole.gif"
 import H2NImg from "../../../public/h2n.jpg"
 import BeLoungeImg from "../../../public/belounge.png"
 import { useLocoScroll } from '../context/LocoScrollProvider';
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollSection = () => {
-  
+  const router = useRouter();
   const {  setScrollContRef, scrollContainerRef, locoScroll } = useLocoScroll();
 
   // Utiliser useEffect pour affecter les références
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window === "undefined") return; 
       const scrollContainer = document.querySelector(".scroll-container");
       if (scrollContainer instanceof HTMLElement) {
         setScrollContRef(scrollContainer)
       }
-    }
+    
   }, [setScrollContRef]);
 
     const animWrapRef =  useRef<HTMLDivElement>(null);
@@ -118,7 +119,9 @@ const ScrollSection = () => {
 
       // Rafraîchissement de LocomotiveScroll lorsque ScrollTrigger se rafraîchit
       ScrollTrigger.addEventListener("refresh", () => {
-        locoScroll.update();
+        if (locoScroll) {
+          locoScroll.update();
+        }
       }); 
       ScrollTrigger.refresh();
 
@@ -163,7 +166,7 @@ const ScrollSection = () => {
                   <p>SUDALYS</p>
                   <div 
                     className="w-[325px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
-                    onClick={() => window.location.href = "/experience/1"} 
+                    onClick={() => router.push("/experience/1")} 
                   >
                     <Image src={SudalysImg} alt='' className='w-[100%] h-auto' />
                   </div>
@@ -178,7 +181,7 @@ const ScrollSection = () => {
                     <p>ANGOVA</p>
                     <div 
                       className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
-                      onClick={() => window.location.href = "/experience/3"} 
+                      onClick={() => router.push("/experience/3")} 
                     >
                       <Image src={AngovaImg} alt='' className='w-[100%] h-auto'/>
                     </div>
@@ -190,7 +193,7 @@ const ScrollSection = () => {
                     <p>H2N AUTOMOBILE</p>
                     <div 
                       className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
-                      onClick={() => window.location.href = "/experience/2"} 
+                      onClick={() => router.push("/experience/2")} 
                     >
                       <Image src={H2NImg} alt='' className='w-[100%] h-auto'/>
                     </div>
@@ -202,7 +205,7 @@ const ScrollSection = () => {
                    <div><p>BE LOUNGE</p></div>
                     <div 
                       className="w-[311px] h-fit max-h-[310px]  transform transition-transform duration-300 hover:scale-110 cursor-pointer"
-                      onClick={() => window.location.href = "/experience/4"} 
+                      onClick={() => router.push("/experience/4")} 
                     >
                       <Image src={BeLoungeImg} alt='' className='w-[100%] h-auto'/>
                     </div>

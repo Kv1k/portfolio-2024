@@ -126,19 +126,22 @@ const experiences: { [key: number]: Experience } = {  1: {
 export default function JobPage({ params }: { params: Promise<{ job: string }> }) {
     const { job } = use(params);
     const jobId = parseInt(job, 10); 
+    
 
   // Vérifier si l'expérience existe sinon rediriger vers 404
   if (isNaN(jobId) || !experiences[jobId]) {
     notFound();
   }
   const handleDownload = () => {
+    if (typeof window !== "undefined") {
     const link = document.createElement("a");
     link.href = "/Lettre_Recommandation.pdf"; // Chemin relatif vers le fichier dans public
     link.download = "Lettre_Recommandation.pdf"; // Nom du fichier lors du téléchargement
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
+    }
+};
   
   const experience = experiences[jobId];
   useEffect(() => {
@@ -169,6 +172,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
         };
         
         const moveCards = (event: MouseEvent | TouchEvent) => {
+            
             let x: number, y: number;
             if ("touches" in event) {
                 x = event.touches[0].clientX;
@@ -233,6 +237,12 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
     }
     
   }, []);
+  const handleOpenLink = () => {
+    if (typeof window !== "undefined" && experience.company !== "Be Lounge") {
+      window.open(experience.link, "_blank");
+    }
+  };
+  
 
   return (
     <div className='w-[100vw] h-[100vh] flex items-center justify-center '>
@@ -243,7 +253,12 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                     <div className="section_info_item w-[10%] lg:w-[60%] justify-between p-[16px] lg:p-0">
                         <span 
                             className="cursor-pointer z-200" 
-                            onClick={() => window.location.href = "http://localhost:3000"}
+                            onClick={() =>{
+                                if (typeof window !== "undefined" ) {
+                                    const baseUrl = window.location.origin; 
+                                    window.location.href = `${baseUrl}/`;
+                                }
+                            } }
                         >
                             <GrLinkPrevious size={28} />
                         </span>
@@ -294,9 +309,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                 <div className="section_bg hidden lg:block">
                     <div
                     className="section_bg_card relative group cursor-pointer"
-                    onClick={() =>
-                        experience.company !== "Be Lounge" && window.open(experience.link, "_blank")
-                    }
+                    onClick={handleOpenLink}
                     >
                     {/* Image */}
                     <div className="section_bg_card_content">

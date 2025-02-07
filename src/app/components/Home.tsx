@@ -1,15 +1,17 @@
 "use client"
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import ScrollSection from './ScrollSection';
 import MobileSection from './MobileSection';
 import ResponsiveNav from './Navigation/ResponsiveNav';
 import { LocoScrollProvider } from '../context/LocoScrollProvider';
 
 const Home = () => {      
-  const isDesktop = window.innerWidth >= 1024;
-
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
+      setIsClient(true);
       const handleResize = () => {
         const newIsDesktop = window.innerWidth >= 1024;
         // Sauvegarder l'état de l'écran dans le localStorage
@@ -23,6 +25,7 @@ const Home = () => {
         } else {
           localStorage.setItem('screenType', currentScreenType);
         }
+        setIsDesktop(newIsDesktop);
       };
 
       // Initialiser le type d'écran
@@ -42,10 +45,12 @@ const Home = () => {
     <>
       {isDesktop ? (
         <div id='desktop-section'>
-          <LocoScrollProvider>
-            <ResponsiveNav />
-            <ScrollSection />
-          </LocoScrollProvider>
+          {isClient && ( 
+            <LocoScrollProvider>
+              <ResponsiveNav />
+              <ScrollSection />
+            </LocoScrollProvider>
+          )}
         </div>
       ) : (
         <div id='mobile-section'>

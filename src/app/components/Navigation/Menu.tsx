@@ -26,7 +26,8 @@ const Menu = () => {
   const container = useRef<HTMLDivElement | null>(null);  
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
+  
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const tl = useRef<gsap.core.Timeline | null>(null);
   
@@ -36,6 +37,8 @@ const Menu = () => {
   }
 
   useGSAP(()=>{
+    if (typeof window !== "undefined") {
+
     gsap.set(".menu-link-item-holder", {y: 75});
     tl.current = gsap.timeline({paused: true})
     .to(".menu-overlay", {
@@ -49,9 +52,28 @@ const Menu = () => {
       stagger: 0.1,
       ease: "power4.inOut",
       delay: -0.75
-    })}, 
+    })}}, 
     { scope: container}
   )
+  useEffect(() => {
+    // Vérifier si nous sommes dans un environnement client
+    if (typeof window !== 'undefined') {
+      const checkIfDesktop = () => {
+        setIsDesktop(window.innerWidth >= 1024);
+      };
+
+      // Initialiser la valeur de isDesktop
+      checkIfDesktop();
+
+      // Ajouter un écouteur d'événement pour la mise à jour de la largeur de la fenêtre
+      window.addEventListener('resize', checkIfDesktop);
+
+      // Nettoyer l'écouteur lorsque le composant est démonté
+      return () => {
+        window.removeEventListener('resize', checkIfDesktop);
+      };
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -66,19 +88,21 @@ const Menu = () => {
   const { locoScroll } = useLocoScroll();
 
   const handleMenuClick = (path: string) => {
-    if (locoScroll && typeof locoScroll.scrollTo === "function" && isDesktop) {
-      locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
-    } else {
-      console.warn("Locomotive Scroll non disponible, utilisation du scroll natif...");
-      const targetElement = document.querySelector(path);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      if (locoScroll && typeof locoScroll.scrollTo === "function" && isDesktop) {
+        locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
       } else {
-        console.error(`Élément introuvable pour le chemin : ${path}`);
+        console.warn("Locomotive Scroll non disponible, utilisation du scroll natif...");
+        const targetElement = document.querySelector(path);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        } else {
+          console.error(`Élément introuvable pour le chemin : ${path}`);
+        }
       }
+    
+      setIsMenuOpen(false);
     }
-  
-    setIsMenuOpen(false);
   };
  
 
