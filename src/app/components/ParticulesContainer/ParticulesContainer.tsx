@@ -100,9 +100,11 @@ export function ParticlesContainer() {
 
       if (init) {
         return (
+          
           <Particles
             className="mt-[60px] h-[92%] w-full absolute translate-z-0"
             id="tsparticles"
+            // @ts-ignore
             options={options}
           />
         );

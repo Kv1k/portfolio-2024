@@ -16,7 +16,7 @@ interface LocoScrollContextType {
 const LocoScrollContext = createContext<LocoScrollContextType | null>(null);
 
 interface LocoScrollProviderProps {
-  children: ReactNode;  // enfants peuvent être de n'importe quel type React valide
+  children: ReactNode; 
 }
 export const LocoScrollProvider: React.FC<LocoScrollProviderProps> = ({ children }) => {
 
@@ -76,7 +76,7 @@ export const useLocoScroll = () => {
   const context = useContext(LocoScrollContext);
   if (!context) {
     console.warn("useLocoScroll must be used within a LocoScrollProvider");
-    return { locoScroll: null };
+    return { locoScroll: null, scrollContainerRef: null, setScrollContRef: () => {} };
   }
   return context;
 };

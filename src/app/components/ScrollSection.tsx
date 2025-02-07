@@ -17,11 +17,15 @@ import { useLocoScroll } from '../context/LocoScrollProvider';
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollSection = () => {
+  
   const {  setScrollContRef, scrollContainerRef, locoScroll } = useLocoScroll();
 
   // Utiliser useEffect pour affecter les références
   useEffect(() => {
-    setScrollContRef(document.querySelector(".scroll-container"));
+    const scrollContainer = document.querySelector(".scroll-container");
+    if (scrollContainer instanceof HTMLElement) {
+      setScrollContRef(scrollContainer)
+    }
 
   }, [setScrollContRef]);
 
@@ -38,8 +42,11 @@ const ScrollSection = () => {
     // Setup de ScrollTrigger pour gérer le défilement horizontal
     ScrollTrigger.scrollerProxy(scrollContainerRef.current, {
       scrollLeft(value) {
+       
         return arguments.length
+          // @ts-ignore
           ? locoScroll.scrollTo(value, 0, 0)
+          // @ts-ignore
           : locoScroll.scroll.instance.scroll.x;
       },
       getBoundingClientRect() {
@@ -50,6 +57,7 @@ const ScrollSection = () => {
           height: window.innerHeight
         };
       },
+      // @ts-ignore
       pinType: scrollContainerRef.current.style.transform ? "transform" : "fixed"
     });
 
@@ -64,6 +72,7 @@ const ScrollSection = () => {
       scrollTrigger: {
         trigger: '.vertical',
         start: 'left left',
+        // @ts-ignore
         end: `+=${animWrapRef.current.scrollHeight+120}`,
         pin: true,
         pinSpacing: true,
@@ -71,6 +80,7 @@ const ScrollSection = () => {
         horizontal: true,
         invalidateOnRefresh: true
       },
+      // @ts-ignore
       y: `-${animWrapRef.current.scrollHeight - window.innerHeight+120}`,
       ease: 'none'
     });
@@ -80,6 +90,7 @@ const ScrollSection = () => {
       scrollTrigger: {
         trigger: '.vertical2',
         start: 'left left',
+        // @ts-ignore
         end: `+=${animWrap2Ref.current.scrollHeight}`,
         pin: true,
         pinSpacing: true,
@@ -87,17 +98,20 @@ const ScrollSection = () => {
         horizontal: true,
         invalidateOnRefresh: true
       },
+      // @ts-ignore
       y: `-${animWrap2Ref.current.scrollHeight - window.innerHeight}`,
       ease: 'none'
     });
 
     // Animation fakePin pour le pinning simulé
     gsap.to('.fakePin', {
+      // @ts-ignore
       y: animWrapRef.current.scrollHeight - window.innerHeight+120,
       ease: 'none',
       scrollTrigger: {
         trigger: '.vertical',
         start: 'left left',
+        // @ts-ignore
         end: `+=${animWrapRef.current.scrollHeight+120}`,
         horizontal: true,
         scrub: true,
@@ -105,13 +119,14 @@ const ScrollSection = () => {
        
       }
     });
-
+    // @ts-ignore
     // Rafraîchissement de LocomotiveScroll lorsque ScrollTrigger se rafraîchit
     ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
     ScrollTrigger.refresh();
 
     // Cleanup lorsque le composant est démonté
     return () => {
+      // @ts-ignore
       ScrollTrigger.kill();
       if (locoScroll) {
         locoScroll.destroy();

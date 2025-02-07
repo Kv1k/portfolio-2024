@@ -1,6 +1,6 @@
 "use client";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import "./job.css";
 import { gsap } from "gsap";
 import { useEffect } from "react";
@@ -54,10 +54,19 @@ import Belounge6 from"../../../../public/beLoungeImg/t6.png";
 import Belounge7 from"../../../../public/beLoungeImg/t7.jpeg";
 import Belounge9 from"../../../../public/beLoungeImg/t9.jpeg";
 
+type Experience = {
+    title: string;
+    link: string;
+    nameLink: string;
+    company: string;
+    location: string;
+    date: string;
+    description: string;
+    technologies: string[];
+    images: StaticImageData[]; // Si vous utilisez Next.js avec des images importées comme StaticImageData
+};
 
-
-const experiences = {
-  1: {
+const experiences: { [key: number]: Experience } = {  1: {
     title: "Développeur FullStack",
     link:"https://sudalys.fr/",
     nameLink:"sudalys.fr",
@@ -102,6 +111,8 @@ const experiences = {
   },
   4: {
     title: "Intégrateur mail",
+    link:"",
+    nameLink:"",
     company: "Be Lounge",
     location: "Full Remote",
     date: "Juillet 2021",
@@ -208,7 +219,9 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                 card.addEventListener("mouseleave",onHover);
 
             });
+            // @ts-ignore
             hero.section?.addEventListener('mousemove',moveCards)
+            // @ts-ignore
             hero.section?.addEventListener('touchmove',moveCards)
 
         })
