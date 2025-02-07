@@ -22,7 +22,7 @@ const ScrollSection = () => {
 
   // Utiliser useEffect pour affecter les références
   useEffect(() => {
-    if (typeof document !== "undefined") {
+    if (typeof window !== "undefined") {
       const scrollContainer = document.querySelector(".scroll-container");
       if (scrollContainer instanceof HTMLElement) {
         setScrollContRef(scrollContainer)

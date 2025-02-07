@@ -144,10 +144,9 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
   useEffect(() => {
     if (typeof window !== "undefined") {
         const hero = {
-        section: document.querySelector(".section"),
-        cards: document.querySelectorAll(".section_bg_card"),
+            section: document.querySelector(".section"),
+            cards: document.querySelectorAll(".section_bg_card"),
         };
-
 
         const init = () => {
             // Masquer et définir les styles des cartes initialement
@@ -169,7 +168,6 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
             gsap.set([hero.cards[6], hero.cards[9]], { z: -10, zIndex: -5 });
         };
         
-
         const moveCards = (event: MouseEvent | TouchEvent) => {
             let x: number, y: number;
             if ("touches" in event) {
