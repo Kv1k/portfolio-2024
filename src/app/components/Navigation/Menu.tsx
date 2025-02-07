@@ -22,7 +22,8 @@ const menuLinks = [
 
 
 const Menu = () => {
-  const container = useRef();
+
+  const container = useRef<HTMLDivElement | null>(null);  
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;

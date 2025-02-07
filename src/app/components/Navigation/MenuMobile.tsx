@@ -21,7 +21,7 @@ const menuLinks = [
 
 
 const MenuMobile = () => {
-  const container = useRef();
+  const container = useRef<HTMLDivElement | null>(null);  
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -51,9 +51,9 @@ const MenuMobile = () => {
   )
 
   useEffect(() => {
-    if(isMenuOpen){
+    if(isMenuOpen && tl.current){
       tl.current.play();
-    }else{
+    }else if (!isMenuOpen && tl.current) {
       tl.current.reverse();
     }
   }, [isMenuOpen])

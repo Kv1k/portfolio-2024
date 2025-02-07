@@ -180,7 +180,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
       })
     };
 
-    const onHover = (event) => {
+    const onHover = (event: { target: gsap.TweenTarget; type: string; }) => {
       gsap.to(event.target,{
         duration: 1.2,
         z: event.type === "mouseenter" ? 40 : 0,

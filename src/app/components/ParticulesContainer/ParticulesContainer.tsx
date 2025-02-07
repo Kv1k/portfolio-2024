@@ -40,7 +40,10 @@ export function ParticlesContainer() {
                 enable: true,
                 mode: "repulse",
               },
-              resize: true
+              resize: {
+                enable: true,
+                detectRetina: true, 
+              },
             },
             modes: {
               push: {

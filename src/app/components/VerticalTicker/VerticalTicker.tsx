@@ -3,18 +3,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./verticalTicker.css";
 
-function VerticalTicker({ type }) {
-  const sliderRef = useRef(null);
+function VerticalTicker({ type }: { type: string }) {
+  const sliderRef = useRef<HTMLUListElement | null>(null);
   const [animationDuration, setAnimationDuration] = useState("0s");
 
   useEffect(() => {
     const calculateAnimationDuration = () => {
       if (sliderRef.current) {
-        const lineHeight = sliderRef.current.querySelector("li").clientHeight;
+        const lineHeight = sliderRef.current.querySelector("li")?.clientHeight;
         const itemCount = sliderRef.current.children.length;
-        const totalHeight = lineHeight * itemCount;
-        const time = totalHeight / 400; // 400px/sec
-        setAnimationDuration(`${time}s`);
+        if (lineHeight !== undefined) {
+          const totalHeight = lineHeight * itemCount;
+          const time = totalHeight / 400; // 400px/sec (vitesse ajustable)
+          setAnimationDuration(`${time}s`);
+        }
+
+       
       }
     };
 
