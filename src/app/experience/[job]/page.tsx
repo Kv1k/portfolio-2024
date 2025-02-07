@@ -219,9 +219,9 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                 card.addEventListener("mouseleave",onHover);
 
             });
-            // @ts-ignore
+            // @ts-expect-error
             hero.section?.addEventListener('mousemove',moveCards)
-            // @ts-ignore
+            // @ts-expect-error
             hero.section?.addEventListener('touchmove',moveCards)
 
         })

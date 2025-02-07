@@ -44,9 +44,9 @@ const ScrollSection = () => {
       scrollLeft(value) {
        
         return arguments.length
-          // @ts-ignore
+          // @ts-expect-error
           ? locoScroll.scrollTo(value, 0, 0)
-          // @ts-ignore
+          // @ts-expect-error
           : locoScroll.scroll.instance.scroll.x;
       },
       getBoundingClientRect() {
@@ -57,7 +57,7 @@ const ScrollSection = () => {
           height: window.innerHeight
         };
       },
-      // @ts-ignore
+      // @ts-expect-error
       pinType: scrollContainerRef.current.style.transform ? "transform" : "fixed"
     });
 
@@ -72,7 +72,7 @@ const ScrollSection = () => {
       scrollTrigger: {
         trigger: '.vertical',
         start: 'left left',
-        // @ts-ignore
+        // @ts-expect-error
         end: `+=${animWrapRef.current.scrollHeight+120}`,
         pin: true,
         pinSpacing: true,
@@ -80,7 +80,7 @@ const ScrollSection = () => {
         horizontal: true,
         invalidateOnRefresh: true
       },
-      // @ts-ignore
+      // @ts-expect-error
       y: `-${animWrapRef.current.scrollHeight - window.innerHeight+120}`,
       ease: 'none'
     });
@@ -90,7 +90,7 @@ const ScrollSection = () => {
       scrollTrigger: {
         trigger: '.vertical2',
         start: 'left left',
-        // @ts-ignore
+        // @ts-expect-error
         end: `+=${animWrap2Ref.current.scrollHeight}`,
         pin: true,
         pinSpacing: true,
@@ -98,20 +98,20 @@ const ScrollSection = () => {
         horizontal: true,
         invalidateOnRefresh: true
       },
-      // @ts-ignore
+      // @ts-expect-error
       y: `-${animWrap2Ref.current.scrollHeight - window.innerHeight}`,
       ease: 'none'
     });
 
     // Animation fakePin pour le pinning simulé
     gsap.to('.fakePin', {
-      // @ts-ignore
+      // @ts-expect-error
       y: animWrapRef.current.scrollHeight - window.innerHeight+120,
       ease: 'none',
       scrollTrigger: {
         trigger: '.vertical',
         start: 'left left',
-        // @ts-ignore
+        // @ts-expect-error
         end: `+=${animWrapRef.current.scrollHeight+120}`,
         horizontal: true,
         scrub: true,
@@ -119,14 +119,14 @@ const ScrollSection = () => {
        
       }
     });
-    // @ts-ignore
+    // @ts-expect-error
     // Rafraîchissement de LocomotiveScroll lorsque ScrollTrigger se rafraîchit
     ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
     ScrollTrigger.refresh();
 
     // Cleanup lorsque le composant est démonté
     return () => {
-      // @ts-ignore
+      // @ts-expect-error
       ScrollTrigger.kill();
       if (locoScroll) {
         locoScroll.destroy();
