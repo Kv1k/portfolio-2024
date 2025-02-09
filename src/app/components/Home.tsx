@@ -1,65 +1,66 @@
 "use client"
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ScrollSection from './ScrollSection';
 import MobileSection from './MobileSection';
-import ResponsiveNav from './Navigation/ResponsiveNav';
-import { LocoScrollProvider } from '../context/LocoScrollProvider';
+import SmoothScrolling from './SmoothScrolling';
+import Menu from './Navigation/Menu'
+import { usePathname } from 'next/navigation'
+import { LenisRef } from "lenis/react"; 
 
 const Home = () => {      
+  const pathname = usePathname()
+
+  const ref = useRef<LenisRef>(null);
   const [isDesktop, setIsDesktop] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-  
+  const showResponsiveNav = pathname?.includes("/experience");
+  const [hasMounted, setHasMounted] = useState(false); 
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsClient(true);
-      const handleResize = () => {
-        const newIsDesktop = window.innerWidth >= 1024;
-        // Sauvegarder l'état de l'écran dans le localStorage
-        const previousScreenType = localStorage.getItem('screenType');
-        const currentScreenType = newIsDesktop ? 'desktop' : 'mobile';
-
-        // Si le type d'écran change, rafraîchir la page
-        if (previousScreenType && previousScreenType !== currentScreenType) {
-          localStorage.setItem('screenType', currentScreenType);
-          window.location.reload(); // Rafraîchit la page
-        } else {
-          localStorage.setItem('screenType', currentScreenType);
-        }
-        setIsDesktop(newIsDesktop);
-      };
-
-      // Initialiser le type d'écran
-      handleResize();
-
-      // Écouter les changements de taille
-      window.addEventListener('resize', handleResize);
-
-      // Nettoyer l'écouteur
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
+    setHasMounted(true);
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+      const isNowDesktop = window.innerWidth >= 1024;
+      const previousScreenType = localStorage.getItem("screenType");
+      const currentScreenType = isNowDesktop ? "desktop" : "mobile";
+  
+      // Vérifier si le type d'écran a changé
+      if (previousScreenType && previousScreenType !== currentScreenType) {
+        localStorage.setItem("screenType", currentScreenType);
+        window.location.reload(); // 🔄 Reload la page
+      } else {
+        localStorage.setItem("screenType", currentScreenType);
+      }
+    };
+  
+    
+    
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  
+  if (!hasMounted) {
+    return <div className="loader">Chargement...</div>; 
+  }
+  
   return (
-    <>
+    <div id={isDesktop ? "desktop-section" : "mobile-section"}>
       {isDesktop ? (
-        <div id='desktop-section'>
-          {isClient && ( 
-            <LocoScrollProvider>
-              <ResponsiveNav />
-              <ScrollSection />
-            </LocoScrollProvider>
-          )}
-        </div>
+        
+        <SmoothScrolling ref={ref}>
+           {!showResponsiveNav && <Menu isDesktop={isDesktop} />}
+           <ScrollSection /> 
+        </SmoothScrolling>
       ) : (
-        <div id='mobile-section'>
-          <ResponsiveNav />
+        <>
+          
+          {!showResponsiveNav &&<Menu isDesktop={isDesktop}/>}
           <MobileSection />
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
-};
+}
 
 export default Home;

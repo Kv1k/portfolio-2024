@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import 'locomotive-scroll/dist/locomotive-scroll.css';
+import 'lenis/dist/lenis.css';
 import Hero from './Hero/Hero';
 import VerticalTicker from './VerticalTicker/VerticalTicker';
 import AboutMe from './AboutMe/AboutMe';
@@ -12,63 +12,33 @@ import SudalysImg from "../../../public/sudalys.png"
 import AngovaImg from "../../../public/auto-ecole.gif"
 import H2NImg from "../../../public/h2n.jpg"
 import BeLoungeImg from "../../../public/belounge.png"
-import { useLocoScroll } from '../context/LocoScrollProvider';
 import { useRouter } from "next/navigation";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useLenis } from 'lenis/react';
 
 const ScrollSection = () => {
   const router = useRouter();
-  const {  setScrollContRef, scrollContainerRef, locoScroll } = useLocoScroll();
+ 
+  const lenis = useLenis();
 
-  // Utiliser useEffect pour affecter les références
-  useEffect(() => {
-    if (typeof window === "undefined") return; 
-      const scrollContainer = document.querySelector(".scroll-container");
-      if (scrollContainer instanceof HTMLElement) {
-        setScrollContRef(scrollContainer)
-      }
-    
-  }, [setScrollContRef]);
-
-    const animWrapRef =  useRef<HTMLDivElement>(null);
-    const animWrap2Ref = useRef<HTMLDivElement>(null);
+  const animWrapRef =  useRef<HTMLDivElement>(null);
+  const animWrap2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     if (typeof window !== "undefined") {
-      if (!locoScroll || !animWrapRef.current || !animWrap2Ref.current) return;
-    
-      // Synchroniser ScrollTrigger avec LocomotiveScroll
-      locoScroll.on("scroll", ScrollTrigger.update);
-
-      // Setup de ScrollTrigger pour gérer le défilement horizontal
-      ScrollTrigger.scrollerProxy(scrollContainerRef.current, {
-        scrollLeft(value) {
-          if (value !== undefined) {
-        return locoScroll.scrollTo(value, {
-          offset: 0,  // Décalage en pixels
-          duration: 1 // Durée du défilement en secondes
-        });
+      if ( !animWrapRef.current || !animWrap2Ref.current) return;
+      lenis?.on("scroll", () => {
+        ScrollTrigger.update();
+      });
+  
+      const resize = () => {
+        ScrollTrigger.refresh()
       }
-      // @ts-expect-error je ne sais pas 
-      return locoScroll.scroll.instance.scroll.x;
-        },
-        getBoundingClientRect() {
-          return {
-            left: 0,
-            top: 0,
-            width: window.innerWidth,
-            height: window.innerHeight
-          };
-        },
-        pinType: scrollContainerRef.current?.style.transform ? "transform" : "fixed"
-      });
-
-      // Configuration des valeurs par défaut pour ScrollTrigger
-      ScrollTrigger.defaults({
-        scroller: scrollContainerRef.current
-      });
-
+  
+      window.addEventListener('resize', resize)
+  
+      
 
       // Animation horizontale pour l'élément anim-wrap
       gsap.to(animWrapRef.current, {
@@ -87,19 +57,20 @@ const ScrollSection = () => {
       });
 
       // Animation horizontale pour l'élément anim-wrap
+    
       gsap.to(animWrap2Ref.current, {
         scrollTrigger: {
-          trigger: '.vertical2',
-          start: 'left left',
+          trigger: ".vertical2",
+          start: "left left",
           end: `+=${animWrap2Ref.current.scrollHeight}`,
           pin: true,
           pinSpacing: true,
           scrub: true,
           horizontal: true,
-          invalidateOnRefresh: true
+          invalidateOnRefresh: true,
         },
         y: `-${animWrap2Ref.current.scrollHeight - window.innerHeight}`,
-        ease: 'none'
+        ease: "none",
       });
 
       // Animation fakePin pour le pinning simulé
@@ -117,28 +88,21 @@ const ScrollSection = () => {
         }
       });
 
-      // Rafraîchissement de LocomotiveScroll lorsque ScrollTrigger se rafraîchit
-      ScrollTrigger.addEventListener("refresh", () => {
-        if (locoScroll) {
-          locoScroll.update();
-        }
-      }); 
-      ScrollTrigger.refresh();
-
+      
       // Cleanup lorsque le composant est démonté
       return () => {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        if (locoScroll) {
-          locoScroll.destroy();
+        if (lenis) {
+          lenis.destroy();
         }
       };
     }
-  }, [locoScroll, animWrapRef, animWrap2Ref]);
+  }, [lenis, animWrapRef, animWrap2Ref]);
 
  
   
   return (
-    <div className="scroll-container" data-scroll-container>
+    <div className="scroll-container w-fit flex" data-scroll-container>
       <div className="content">
         <section className='w-[100vw]' id='accueil'>
           <Hero/>

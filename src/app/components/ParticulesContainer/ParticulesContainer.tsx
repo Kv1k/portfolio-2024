@@ -7,7 +7,7 @@ export function ParticlesContainer() {
     const [init, setInit] = useState(false);
     // this customizes the component tsParticles installation
     useEffect(() => {
-        if (typeof window !== "undefined") {
+        //if (typeof window !== "undefined") {
           initParticlesEngine(async (engine) => {
             // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
             // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -19,7 +19,7 @@ export function ParticlesContainer() {
           }).then(() => {
             setInit(true);
           });
-        }
+        //}
       }, []);
     
      

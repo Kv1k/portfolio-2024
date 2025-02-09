@@ -84,12 +84,13 @@
     position: relative;
 }
 
-.menu-link-item-holder a {
+.menu-link-item-holder span {
     color: #000;
     font-size: 80px;
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 85%;
+    cursor: pointer;
 }
 
 .menu-info {

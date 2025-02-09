@@ -88,11 +88,7 @@ section.vertical .inner-section.center {
   background-color: #2C2F33;
 }
 
-/* LocomotiveScroll actif uniquement pour desktop */
-#desktop-section [data-scroll-container] {
-  overflow-y: hidden !important;
-  overflow-x: hidden !important;
-}
+
 
 /* Scroll natif pour mobile */
 #mobile-section {

@@ -7,10 +7,12 @@ import {gsap} from "gsap";
 import {useGSAP} from "@gsap/react";
 import Image from "next/image";
 import Logo from "../../../../public/black-logo.png";
-import { useLocoScroll } from "../../context/LocoScrollProvider";
+//import { useLenisScroll } from "../../context/LenisScrollProvider";
 import "../../globals.css";
+import { useLenis } from 'lenis/react';
 
 gsap.registerPlugin(useGSAP);
+
 
 
 const menuLinks = [
@@ -21,15 +23,16 @@ const menuLinks = [
 ];
 
 
-const Menu = () => {
+const Menu = ({ isDesktop }: { isDesktop: boolean }) => {
 
   const container = useRef<HTMLDivElement | null>(null);  
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const [isDesktop, setIsDesktop] = useState(false);
 
   const tl = useRef<gsap.core.Timeline | null>(null);
+
+  const lenis = useLenis();
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -55,25 +58,7 @@ const Menu = () => {
     })}}, 
     { scope: container}
   )
-  useEffect(() => {
-    // Vérifier si nous sommes dans un environnement client
-    if (typeof window !== 'undefined') {
-      const checkIfDesktop = () => {
-        setIsDesktop(window.innerWidth >= 1024);
-      };
-
-      // Initialiser la valeur de isDesktop
-      checkIfDesktop();
-
-      // Ajouter un écouteur d'événement pour la mise à jour de la largeur de la fenêtre
-      window.addEventListener('resize', checkIfDesktop);
-
-      // Nettoyer l'écouteur lorsque le composant est démonté
-      return () => {
-        window.removeEventListener('resize', checkIfDesktop);
-      };
-    }
-  }, []);
+  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -85,14 +70,15 @@ const Menu = () => {
     }
   }, [isMenuOpen])
 
-  const { locoScroll } = useLocoScroll();
+  //const { lenisScroll } = useLenisScroll();
 
   const handleMenuClick = (path: string) => {
     if (typeof window !== "undefined") {
-      if (locoScroll && typeof locoScroll.scrollTo === "function" && isDesktop) {
-        locoScroll.scrollTo(path, { duration: 1, easing: [0.25, 0.1, 0.25, 1] });
+      if (lenis && isDesktop) {
+        if ( isDesktop) {
+          lenis.scrollTo(path, { duration: 1});
+        }
       } else {
-        console.warn("Locomotive Scroll non disponible, utilisation du scroll natif...");
         const targetElement = document.querySelector(path);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: "smooth" });
@@ -136,9 +122,7 @@ const Menu = () => {
                 {menuLinks.map((link,index)=>(
                   <div className="menu-link-item" key={index}>
                     <div className="menu-link-item-holder" onClick={()=>{handleMenuClick(link.path);}}>
-                      <Link href="" className='menu-link'>
-                        {link.label}
-                      </Link>
+                      <span className="menu-link">{link.label}</span>
                     </div>
                   </div>
                 ))}
