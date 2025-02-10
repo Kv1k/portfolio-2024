@@ -12,12 +12,12 @@ import Sudalys1 from "../../../../public/SudalysImg/t1.png";
 import Sudalys2 from "../../../../public/SudalysImg/t2.jpg";
 import Sudalys3 from "../../../../public/SudalysImg/t3.jpeg";
 import Sudalys4 from "../../../../public/SudalysImg/t4.png";
-import Sudalys5 from "../../../../public/SudalysImg/t5.jpg";
+import Sudalys5 from "../../../../public/SudalysImg/t5.png";
 import Sudalys6 from "../../../../public/SudalysImg/t6.png";
 import Sudalys7 from "../../../../public/SudalysImg/t7.png";
 import Sudalys8 from "../../../../public/SudalysImg/t8.png";
 import Sudalys9 from "../../../../public/SudalysImg/t9.jpg";
-import Sudalys10 from "../../../../public/SudalysImg/t10.jpeg";
+import Sudalys10 from "../../../../public/SudalysImg/t10.png";
 import Sudalys11 from "../../../../public/SudalysImg/t11.jpg";
 
 

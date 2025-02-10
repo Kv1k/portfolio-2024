@@ -2,7 +2,9 @@
 .marquee-wrap {
     height:100vh ;
    
-position: relative;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .slider {
@@ -12,7 +14,8 @@ animation: slider linear infinite;
 }
 
 .slider li {
-line-height: 40px;
+line-height: 2.4;
+writing-mode: -webkit-vertical-rl; /* Préfixe pour Safari */
 writing-mode: vertical-rl; /* Orientation verticale */
 text-orientation: mixed;
 transform: rotate(180deg); /* Inversion pour partir du haut */
@@ -25,11 +28,16 @@ animation: slider2 linear infinite;
 }
 
 .slider2 li {
-line-height: 25px;
-writing-mode: vertical-rl;
-text-orientation: mixed;
+    line-height: 2;
+    writing-mode: -webkit-vertical-rl; /* Préfixe pour Safari */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
-
+@supports (-webkit-hyphens:none) and (text-orientation:upright) {
+    .slider2 li {
+        line-height: 6.5 !important;
+    }
+}
 @keyframes slider {
 0% {
     transform: translateY(0);
