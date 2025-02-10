@@ -53,7 +53,7 @@ function Contact() {
             </div>
 
             <div className="form w-[80vw] lg:w-[62vw] flex flex-col items-center "> 
-                <h1 className="text-[17px] md:text-[22px] text-[#85EA26]">CONTACTEZ-MOI</h1>
+                <h1 className="text-[17px] md:text-[22px] text-white">CONTACTEZ-MOI</h1>
                 <p className='text-[17px] font-bold mb-2 mt-5 text-[#85EA26]'><a href="tel:+33467702808" className="hover:underline">07 83 97 19 31</a></p>
                 <div className="flex justify-center items-center mb-7">
                     <Separator className="bg-[#85EA26] !w-[20vw]" />

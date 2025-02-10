@@ -1,4 +1,6 @@
-import React from 'react'
+"use client";
+
+import React, { useEffect, useRef } from 'react'
 import { GrReactjs } from "react-icons/gr";
 import { FaJs,FaHtml5,FaCss3Alt,FaSymfony, FaPhp,FaNode, FaJava, FaDocker, FaLinux, FaGithub} from "react-icons/fa";
 import LogoTwig from "../../../../public/twig-logo.png";
@@ -9,16 +11,83 @@ import { SiSqlite, SiGithubactions,SiDart,SiNextdotjs } from "react-icons/si";
 import { RiFlutterFill } from "react-icons/ri";
 import Image from "next/image"
 import Moi from "../../../../public/moi2.jpg"
+import gsap from "gsap";
+interface AboutMeProps {
+  aboutMeRef: React.RefObject<HTMLDivElement>;
+}
 
-function AboutMe() {
+function AboutMe({aboutMeRef} :AboutMeProps) {
+  const borderTopRightRef = useRef(null);
+  const borderBottomLeftRef = useRef(null);
+  const imageRef = useRef(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+
+  useEffect(() => {
+    tlRef.current = gsap.timeline({ paused: true });
+  
+    // Suppression de l'opacité 0 au début
+    gsap.set([ borderBottomLeftRef.current], { opacity: 1 });
+    gsap.set([borderTopRightRef.current], { opacity: 0 });
+
+    tlRef.current
+      .to(borderTopRightRef.current, {
+        opacity: 1,
+        top: "-15px",
+        right: "-15px",
+        duration: 1.2, // Seulement déplacement
+      })
+      
+      .fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1.2 },
+        "-=0.8"
+      );
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          tlRef.current?.play();
+        } else {
+          tlRef.current?.reverse();
+        }
+      },
+      { threshold: 0.6 }
+    );
+  
+    if (aboutMeRef.current) {
+      observer.observe(aboutMeRef.current);
+    }
+  
+    return () => observer.disconnect();
+  }, []);
+  
   return (
     <>
-      <div className="inner-section h-[100vh] lg:h-[98vh] michroma-text">
+      <div className="inner-section h-[100vh] md:h-[80vh] lg:h-[98vh] michroma-text">
                  
-        <div className='h-[50%] lg:h-[64%] mt-10 lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[35vw] md:pl-[32vw]'>
-          <div className="w-[90%] md:w-[60%] lg:w-[270px] h-fit lg:max-h-[390px] mb-[30px]" >
-            <Image src={Moi} alt='' className='w-[100%] h-auto'/>
-          </div>
+        <div className='h-[50%]  lg:h-[64%] mt-[5.5rem] lg:mt-0 bg-transparent flex flex-col justify-end items-start pl-[35vw] md:pl-[32vw]'>
+        <div  className="relative w-[90%] md:w-[60%] lg:w-[270px] h-fit lg:max-h-[390px] mb-[30px]">
+          {/* Image animée */}
+          <Image ref={imageRef} src={Moi} alt="Moi" className="w-full h-auto opacity-0  hidden lg:block" />
+          <Image  src={Moi} alt="Moi" className="w-[95%] h-auto block lg:hidden" />
+          {/* Bordure haut-droit */}
+          <div
+            ref={borderTopRightRef}
+            className="absolute w-10 h-10 border-t-2 border-r-2 border-[#85EA26] hidden lg:block"
+          ></div>
+          <div
+            
+            className="absolute w-10 h-10 border-t-2 border-r-2 top-[-15px] right-[-3px] border-[#85EA26] block lg:hidden"
+          ></div>
+
+
+          {/* Bordure bas-gauche */}
+          <div
+            ref={borderBottomLeftRef}
+            className="absolute w-10 h-10 bottom-[-15px] left-[-15px] border-b-2 border-l-2 border-[#85EA26]"
+          ></div>
+        </div>
         </div>
         <div className='  flex flex-col items-center'>
           <div className="bg-white w-[88vw] lg:w-[92vw] h-[1.2px]"/>
@@ -28,9 +97,9 @@ function AboutMe() {
           A propos de moi
         </h3>
         
-        <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[32vw] mt-[13vh] lg:mt-[25px] '>
+        <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[32vw] mt-[22vh] md:mt-[7vh] lg:mt-[25px] '>
         
-          <p className='w-[88%] lg:w-[400px] h-[180px] text-[11px] whitespace-normal break-words'>
+          <p className='w-[88%] lg:w-[400px] h-[180px] md:h-[95px] text-[11px] whitespace-normal break-words'>
           Salut ! Moi, c’est Kamil, un jeune Montpelliérain qui vient d’obtenir son Master en Architecture Logicielle à Epitech. <br />
           J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys, mais j’ai aussi une appétence pour l’UX/UI design. 
           C’est d’ailleurs par le design que j’ai découvert l’informatique !<br /> J’ai un parcours assez atypique que je me ferais une joie de vous raconter lors d’un entretien.
@@ -47,7 +116,7 @@ function AboutMe() {
             Pas sur Internet, mais bien sur les vagues ! <br />
             Et quand la mer est plate (souvent en Méditerranée), je pars faire une balade en paddle avec mon chien. <br />
             Je suis aussi passionné par la musique : je produis de la house et j’en mixe.<br />
-            Pour le fun, je fais aussi du montage vidéo, mais ça m’est aussi arrivé d’en faire pour des associations. 
+            De plus, je fais aussi du montage vidéo pour le plaisir, mais ça m’est aussi arrivé d’en faire pour des associations. 
             <br />   
             {/* Vous l’avez compris, je suis un vrai touche-à-tout, avide de découvertes et d’aventures. 
             Peut-être que la prochaine se fera avec vous ? 
@@ -58,7 +127,7 @@ function AboutMe() {
         
       </div>
       {/* Skills */}
-      <div className="inner-section  h-auto  py-20 michroma-text">
+      <div className="inner-section  h-auto  pb-20 pt-[11rem] michroma-text">
         <div className='  flex flex-col items-center'>
           <div className="bg-white  w-[88vw] lg:w-[92vw] h-[1.2px]"/>
         </div>

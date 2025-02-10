@@ -10,7 +10,7 @@ import Contact from './Contact/Contact';
 import Image from "next/image"
 import SudalysImg from "../../../public/sudalys.png"
 import AngovaImg from "../../../public/auto-ecole.gif"
-import H2NImg from "../../../public/h2n.jpg"
+import H2NImg from "../../../public/h2n.png"
 import BeLoungeImg from "../../../public/belounge.png"
 import { useRouter } from "next/navigation";
 import { useLenis } from 'lenis/react';
@@ -22,6 +22,8 @@ const ScrollSection = () => {
 
   const animWrapRef =  useRef<HTMLDivElement>(null);
   const animWrap2Ref = useRef<HTMLDivElement>(null);
+  const aboutMeRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -110,26 +112,26 @@ const ScrollSection = () => {
 
          <VerticalTicker type="xp"/>
 
-        <section className="vertical mt-[60px] pb-30" id='experiences'>
+        <section className="vertical mt-[60px] pb-30" >
         
           <div ref={animWrapRef} className="anim-wrap">
             
             <div className="inner-section !h-[64vh]">
               <div className="fakePin w-[100%] h-[75vh] flex flex-col justify-center items-center">
-              <div className="michroma-text font-normal text-[27px] stretchLetter">Mes</div>
-                <div className="michroma-text font-normal text-[27px] stretchLetter">Expériences</div>
+              <div className="michroma-text font-normal text-[27px] stretchLetter text-[#85EA26]">Mes</div>
+                <div className="michroma-text font-normal text-[27px] stretchLetter  text-[#85EA26]">Expériences</div>
               </div>
 
               
             </div>
             
-            <div className="inner-section !h-[215vh]">
+            <div className="inner-section !h-[215vh]" >
               <div className="relative w-full">
-              <div className="flex flex-col justify-start items-end w-full h-[370px] pr-[11rem]">
+              <div id='experiences' className="flex flex-col justify-start items-end w-full h-[370px] pr-[11rem]">
                 <div>
                   <p>SUDALYS</p>
                   <div 
-                    className="w-[325px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                    className="w-[325px] h-fit transform transition-transform duration-300 hover:scale-[1.13] cursor-pointer"
                     onClick={() => router.push("/experience/1")} 
                   >
                     <Image src={SudalysImg} alt='' className='w-[100%] h-auto' />
@@ -144,7 +146,7 @@ const ScrollSection = () => {
                   <div>
                     <p>ANGOVA</p>
                     <div 
-                      className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                      className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-[1.13] cursor-pointer"
                       onClick={() => router.push("/experience/3")} 
                     >
                       <Image src={AngovaImg} alt='' className='w-[100%] h-auto'/>
@@ -156,7 +158,7 @@ const ScrollSection = () => {
                   <div>
                     <p>H2N AUTOMOBILE</p>
                     <div 
-                      className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                      className="w-[311px] h-fit transform transition-transform duration-300 hover:scale-[1.13] cursor-pointer"
                       onClick={() => router.push("/experience/2")} 
                     >
                       <Image src={H2NImg} alt='' className='w-[100%] h-auto'/>
@@ -168,7 +170,7 @@ const ScrollSection = () => {
                   <div className='relative flex flex-col'>
                    <div><p>BE LOUNGE</p></div>
                     <div 
-                      className="w-[311px] h-fit max-h-[310px]  transform transition-transform duration-300 hover:scale-110 cursor-pointer"
+                      className="w-[311px] h-fit max-h-[310px]  transform transition-transform duration-300 hover:scale-[1.13] cursor-pointer"
                       onClick={() => router.push("/experience/4")} 
                     >
                       <Image src={BeLoungeImg} alt='' className='w-[100%] h-auto'/>
@@ -187,10 +189,10 @@ const ScrollSection = () => {
           </div>
         </section>
         <VerticalTicker type="aboutMe"/>
-      <section className="vertical2 mt-[60px] w-[100vw]" id='aboutMe'>
+      <section className="vertical2 mt-[60px] w-[100vw]" id='aboutMe' ref={aboutMeRef}>
         
         <div ref={animWrap2Ref} className="anim-wrap">
-         <AboutMe/>        
+         <AboutMe aboutMeRef={aboutMeRef}/>        
         </div>
       </section>
 

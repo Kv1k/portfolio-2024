@@ -88,7 +88,7 @@ const experiences: { [key: number]: Experience } = {  1: {
     date: "Décembre 2024",
     description: `Réalisation d’une mission freelance incluant la création d’un site vitrine en Next.js, l’optimisation du référencement (SEO) ainsi que la conception du logo et de l’identité graphique de l’entreprise H2N Automobile.`,
     technologies: ["JS", "React", "Next.js"],
-    images: [H2n1,H2n9,H2n7,H2n2,H2n4,H2n11,H2n5,H2n6,H2n10,H2n8,H2n3]
+    images: [H2n1,H2n9,H2n7,H2n2,H2n4,H2n8,H2n5,H2n6,H2n10,H2n11,H2n3]
   },
   3: {
     title: "Porteur de projet",
@@ -245,7 +245,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
   
 
   return (
-    <div className='w-[100vw] h-[100vh] flex items-center justify-center '>
+    <div className='w-[100vw] h-[100vh] flex items-center justify-center overflow-hidden'>
         <main className='app w-[100%] h-[100%]'>
         <div className='section'>
             <div className="section_wrapper">

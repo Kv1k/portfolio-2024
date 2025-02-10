@@ -75,21 +75,31 @@ const Menu = ({ isDesktop }: { isDesktop: boolean }) => {
   const handleMenuClick = (path: string) => {
     if (typeof window !== "undefined") {
       if (lenis && isDesktop) {
-        if ( isDesktop) {
-          lenis.scrollTo(path, { duration: 1});
+        if (isDesktop) {
+          const targetElement = document.querySelector(path) as HTMLElement;
+          if (targetElement) {
+           
+
+            lenis.scrollTo(targetElement, { 
+              duration: 1, 
+            });
+          } else {
+            console.error(`Élément introuvable pour le chemin : ${path}`);
+          }
         }
       } else {
         const targetElement = document.querySelector(path);
         if (targetElement) {
-          targetElement.scrollIntoView({ behavior: "smooth" });
+          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
           console.error(`Élément introuvable pour le chemin : ${path}`);
         }
       }
-    
+      
       setIsMenuOpen(false);
     }
   };
+  
  
 
   return (
