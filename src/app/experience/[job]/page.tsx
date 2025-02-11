@@ -92,8 +92,10 @@ const experiences: { [key: number]: Experience } = {  1: {
   },
   3: {
     title: "Porteur de projet",
-    link:"https://angova.eu/",
-    nameLink:"angova.eu",
+    link:"",
+    //link:"https://angova.eu/",
+    //nameLink:"angova.eu",
+    nameLink:"",
     company: "Angova",
     location: "Full Remote",
     date: "Depuis 2023",
@@ -296,10 +298,10 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                                 <li key={index}>- {tech}</li>
                             ))}
                         </ul>
-                        {experience.company !== "Be Lounge" && (
+                        {(experience.company !== "Be Lounge" && experience.company !== "Angova") && (
                             <>
                                 <h2 className="block lg:hidden michroma-text underline text-[15px] mb-[5px] ">Lien :</h2>
-                                <p className="block lg:hidden font-extralight text-[15px] mb-[12vh]  "><span className="underline cursor-pointer">{experience.nameLink}</span> &#8599;</p>
+                                <p className="block lg:hidden font-extralight text-[15px] mb-[12vh]  "><a href={experience.link} target="_blank" rel="noopener noreferrer" className="underline cursor-pointer">{experience.nameLink}</a> &#8599;</p>
                             </>
                         )}
                         
@@ -321,7 +323,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                     </div>
 
                     {/* Overlay + Texte uniquement si company !== "Be Lounge" */}
-                    {experience.company !== "Be Lounge" && (
+                    {(experience.company !== "Be Lounge" && experience.company !== "Angova") && (
                         <>
                         {/* Overlay noir semi-transparent */}
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity"></div>
