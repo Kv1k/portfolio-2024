@@ -107,7 +107,7 @@ const experiences: { [key: number]: Experience } = {  1: {
     Grâce à sa version bêta, Angova a déjà pu venir en aide à de nombreuses personnes.<br/>
     À travers ce projet, j'ai pu réaliser les maquettes, une pub vidéo, mettre en place la version bêta, et enfin prospecter des entreprises.<br/>
     Ce n'est que le début ! La nouvelle version arrive bientôt  &#128521;`,
-    technologies: ["JS", "React", "Next.js", "Symfony", "PHP", "PostgreSQL"],
+    technologies: ["JS", "React", "Next.js", "Node.js", "NOSQL", "MongoDB"],
     images: [Angova1,Angova7,Angova11,Angova4,Angova9,Angova2,Angova6,Angova10,Angova3,Angova5,Angova8]
 
   },
