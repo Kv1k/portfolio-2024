@@ -92,10 +92,8 @@ const experiences: { [key: number]: Experience } = {  1: {
   },
   3: {
     title: "Porteur de projet",
-    link:"",
-    //link:"https://angova.eu/",
-    //nameLink:"angova.eu",
-    nameLink:"",
+    link:"https://angova.eu/",
+    nameLink:"angova.eu",
     company: "Angova",
     location: "Full Remote",
     date: "Depuis 2023",
@@ -103,7 +101,7 @@ const experiences: { [key: number]: Experience } = {  1: {
     Angova est un projet dont je suis le porteur depuis maintenant presque deux ans et dont la réalisation 
     ainsi que les résultats me tiennent énormément à cœur.<br/>
     Fin 2023, j'ai décidé d'en faire mon projet de fin d'année, ce qui m'a donné l'opportunité de manager une équipe de huit étudiants développeurs.<br/>
-    J'ai également eu la chance de collaborer avec des auto-écoles de ma région ainsi qu'un centre de migration à Montpellier.<br/>
+    J'ai également eu la chance de collaborer avec des auto-écoles de ma région ainsi qu'un centre de migrant à Montpellier.<br/>
     Grâce à sa version bêta, Angova a déjà pu venir en aide à de nombreuses personnes.<br/>
     À travers ce projet, j'ai pu réaliser les maquettes, une pub vidéo, mettre en place la version bêta, et enfin prospecter des entreprises.<br/>
     Ce n'est que le début ! La nouvelle version arrive bientôt  &#128521;`,
@@ -298,7 +296,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                                 <li key={index}>- {tech}</li>
                             ))}
                         </ul>
-                        {(experience.company !== "Be Lounge" && experience.company !== "Angova") && (
+                        {(experience.company !== "Be Lounge") && (
                             <>
                                 <h2 className="block lg:hidden michroma-text underline text-[15px] mb-[5px] ">Lien :</h2>
                                 <p className="block lg:hidden font-extralight text-[15px] mb-[12vh]  "><a href={experience.link} target="_blank" rel="noopener noreferrer" className="underline cursor-pointer">{experience.nameLink}</a> &#8599;</p>
@@ -323,7 +321,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                     </div>
 
                     {/* Overlay + Texte uniquement si company !== "Be Lounge" */}
-                    {(experience.company !== "Be Lounge" && experience.company !== "Angova") && (
+                    {(experience.company !== "Be Lounge" ) && (
                         <>
                         {/* Overlay noir semi-transparent */}
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity"></div>
