@@ -101,7 +101,8 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
         
           <p className='w-[88%] lg:w-[400px] h-[180px] md:h-[95px] text-[11px] whitespace-normal break-words'>
           Salut ! Moi, c’est Kamil, un jeune Montpelliérain qui vient d’obtenir son Master en Architecture Logicielle à Epitech. <br />
-          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys, mais j’ai aussi une appétence pour l’UX/UI design. 
+          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys.
+          De plus, j’ai aussi une appétence pour l’UX/UI design. 
           C’est d’ailleurs par le design que j’ai découvert l’informatique !<br /> J’ai un parcours assez atypique que je me ferais une joie de vous raconter lors d’un entretien.
           <br/>
           {/* Je suis vraiment heureux d’avoir découvert l’informatique il y a maintenant cinq ans, car aujourd’hui, c’est clairement une vocation. 
@@ -114,10 +115,9 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
             En-dehors du pro, je suis un passionné et un grand curieux. <br />
             Ce que j’aime par-dessus tout, c’est surfer… <br />
             Pas sur Internet, mais bien sur les vagues ! <br />
-            Et quand la mer est plate (souvent en Méditerranée), je pars faire une balade en paddle avec mon chien. <br />
-            Je suis aussi passionné par la musique : je produis de la house et j’en mixe.<br />
-            De plus, je fais aussi du montage vidéo pour le plaisir, mais ça m’est aussi arrivé d’en faire pour des associations. 
-            <br />   
+            <br />
+            Actuellement, je suis à la recherche d’un CDI en tant que développeur fullstack, prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée.
+            
             {/* Vous l’avez compris, je suis un vrai touche-à-tout, avide de découvertes et d’aventures. 
             Peut-être que la prochaine se fera avec vous ? 
             Actuellement, je suis à la recherche d’un CDI en tant que développeur fullstack, prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée. 
