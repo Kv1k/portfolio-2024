@@ -100,8 +100,8 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
         <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[32vw] mt-[22vh] md:mt-[7vh] lg:mt-[25px] '>
         
           <p className='w-[88%] lg:w-[400px] h-[180px] md:h-[95px] text-[11px] whitespace-normal break-words'>
-          Salut ! Moi, c’est Kamil, un jeune Montpelliérain qui vient d’obtenir son Master en Architecture Logicielle à Epitech. <br />
-          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys.
+          Bonjour ! Moi, c’est Kamil. Je vient d’obtenir son Master en Informatique à Epitech. <br />
+          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys.<br />
           De plus, j’ai aussi une appétence pour l’UX/UI design. 
           C’est d’ailleurs par le design que j’ai découvert l’informatique !<br /> J’ai un parcours assez atypique que je me ferais une joie de vous raconter lors d’un entretien.
           <br/>
