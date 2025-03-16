@@ -115,6 +115,7 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
             En-dehors du pro, je suis un passionné et un grand curieux. <br />
             Ce que j’aime par-dessus tout, c’est surfer… <br />
             Pas sur Internet, mais bien sur les vagues ! <br />
+            J'aime aussi faire du montage vidéo pour le plaisir, mais ça m’est arrivé d’en faire pour des associations.
             <br />
             Actuellement, je suis à la recherche d’un CDI en tant que développeur fullstack, prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée.
             
