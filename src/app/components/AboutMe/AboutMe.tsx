@@ -100,11 +100,11 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
         <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[32vw] mt-[22vh] md:mt-[7vh] lg:mt-[25px] '>
         
           <p className='w-[88%] lg:w-[400px] h-[180px] md:h-[95px] text-[11px] whitespace-normal break-words'>
-          Bonjour ! Moi, c&apos;est Kamil. Je vient d’obtenir son Master en Informatique à Epitech Montpellier. <br />
-          J&apos;ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys.<br />
+          Bonjour ! Moi, c’est Kamil. Je vient d’obtenir son Master en Informatique à Epitech Montpellier. <br />
+          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys.<br />
           De plus, j’ai aussi une appétence pour l’UX/UI design. 
-          C&apos;est d’ailleurs par le design que j&apos;ai découvert l&apos;informatique !<br /> 
-          J&apos;ai un parcours assez atypique que je me ferais une joie de vous raconter lors d&apos;un entretien.
+          C’est d’ailleurs par le design que j’ai découvert l’informatique !<br /> 
+          J’ai un parcours assez atypique que je me ferais une joie de vous raconter lors d’un entretien.
           <br/>
           {/* Je suis vraiment heureux d’avoir découvert l’informatique il y a maintenant cinq ans, car aujourd’hui, c’est clairement une vocation. 
           Ce qui me motive le plus, c’est le côté challengeant de ce domaine et de la curiosité dont il faut faire preuve pour trouver des solutions à la fois adaptées et efficiente.
@@ -116,7 +116,7 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
             En-dehors du pro, je suis un passionné et un grand curieux. <br />
             Ce que j’aime par-dessus tout, c’est surfer… <br />
             Pas sur Internet, mais bien sur les vagues ! <br />
-            J'aime aussi faire du montage vidéo pour le plaisir, mais ça m’est arrivé d’en faire pour des associations.
+            J’aime aussi faire du montage vidéo pour le plaisir, mais ça m’est arrivé d’en faire pour des associations.
             <br />
             Actuellement, je suis à la recherche d’un CDI en tant que développeur fullstack, prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée.
             
