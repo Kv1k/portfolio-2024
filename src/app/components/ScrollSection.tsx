@@ -11,7 +11,6 @@ import Image from "next/image"
 import SudalysImg from "../../../public/sudalys.png"
 import AngovaImg from "../../../public/auto-ecole.gif"
 import H2NImg from "../../../public/h2n.png"
-import BeLoungeImg from "../../../public/belounge.png"
 import { useRouter } from "next/navigation";
 import { useLenis } from 'lenis/react';
 
