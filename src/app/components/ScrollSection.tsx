@@ -125,7 +125,7 @@ const ScrollSection = () => {
               
             </div>
             
-            <div className="inner-section !h-[215vh]" >
+            <div className="inner-section !h-[180vh]" >
               <div className="relative w-full">
               <div id='experiences' className="flex flex-col justify-start items-end w-full h-[370px] pr-[11rem]">
                 <div>
@@ -166,18 +166,7 @@ const ScrollSection = () => {
                     <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
                   </div>
                 </div>
-                <div className="absolute top-[85rem]  left-[15rem] flex flex-col justify-start items-start  h-[370px] ">
-                  <div className='relative flex flex-col'>
-                   <div><p>BE LOUNGE</p></div>
-                    <div 
-                      className="w-[311px] h-fit max-h-[310px]  transform transition-transform duration-300 hover:scale-[1.13] cursor-pointer"
-                      onClick={() => router.push("/experience/4")} 
-                    >
-                      <Image src={BeLoungeImg} alt='' className='w-[100%] h-auto'/>
-                    </div>
-                    <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
-                  </div>
-                </div>
+                
                
               </div>
 

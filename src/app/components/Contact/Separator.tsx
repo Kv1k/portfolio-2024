@@ -17,7 +17,7 @@ const Separator = React.forwardRef<
       decorative={decorative}
       orientation={orientation}
       className=
-        "shrink-0 bg-[#85EA26] h-[1px] w-full"
+        "shrink-0 bg-[#85EA26] h-[1px] !w-full"
       {...props}
     />
   )

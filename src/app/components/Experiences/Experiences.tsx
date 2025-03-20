@@ -37,14 +37,6 @@ function Experiences() {
         <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
       </div>
 
-      <div className="flex flex-col justify-center items-start ">
-        <div><p>BE LOUNGE</p></div>
-        <div className="w-[200px] transform transition-transform duration-300 hover:scale-[1.13] cursor-pointer"
-            onClick={() => router.push("/experience/4")} >
-          <Image src={BeLoungeImg} alt='' className='w-[100%] h-auto' />
-        </div>
-        <div><p className="michroma-text text-[12px]">Cliquer pour voir</p></div>
-      </div>
     </div>
   );
 }

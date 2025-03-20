@@ -99,26 +99,24 @@ function AboutMe({aboutMeRef} :AboutMeProps) {
         
         <div className='flex flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start  w-[100%]  h-[32%] pl-0 lg:pl-[32vw] mt-[22vh] md:mt-[7vh] lg:mt-[25px] '>
         
-          <p className='w-[88%] lg:w-[400px] h-[180px] md:h-[95px] text-[11px] whitespace-normal break-words'>
-          Bonjour ! Moi, c’est Kamil. Je vient d’obtenir son Master en Informatique à Epitech Montpellier. <br />
-          J’ai travaillé pendant presque trois ans en tant que développeur fullstack chez Sudalys.<br />
-          De plus, j’ai aussi une appétence pour l’UX/UI design. 
-          C’est d’ailleurs par le design que j’ai découvert l’informatique !<br /> 
-          J’ai un parcours assez atypique que je me ferais une joie de vous raconter lors d’un entretien.
-          <br/>
-          {/* Je suis vraiment heureux d’avoir découvert l’informatique il y a maintenant cinq ans, car aujourd’hui, c’est clairement une vocation. 
-          Ce qui me motive le plus, c’est le côté challengeant de ce domaine et de la curiosité dont il faut faire preuve pour trouver des solutions à la fois adaptées et efficiente.
-          Au fil des années, j’ai eu l’occasion de travailler sur des projets professionnels et entrepreneuriaux qui m’ont marqué et dont je suis fier. 
-          Ce qui me touche particulièrement, c’est de voir à quel point mes compétences peuvent faciliter la vie des gens, que ce soit dans leur travail ou leur quotidien. */}
+          <p className='w-[88%] lg:w-[400px] h-[180px] md:h-[95px] text-[10px] whitespace-normal break-words'>
 
+          Diplomé d’un master en informatique, j’ai travaillé
+           pendant  deux ans et demi  en tant que développeur fullstack.J’ai également 
+           une appétence pour l’UX/UI design.<br />  
+          C’est d’ailleurs par le design que j’ai découvert l’informatique
+          L’informatique est aujourd’hui une vocation, portée par le défi constant qu’offre ce domaine et la curiosité nécessaire
+          pour concevoir des solutions à la fois adaptées et efficientes.<br /> 
+            Aujourd’hui, je suis prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée !
+        
           </p>
-          <p className='ml-0 mt-8 lg:mt-0 lg:ml-[60px] w-[88%] lg:w-[400px]  h-[180px] text-[11px] whitespace-normal break-words'>
-            En-dehors du pro, je suis un passionné et un grand curieux. <br />
-            Ce que j’aime par-dessus tout, c’est surfer… <br />
-            Pas sur Internet, mais bien sur les vagues ! <br />
-            J’aime aussi faire du montage vidéo pour le plaisir, mais ça m’est arrivé d’en faire pour des associations.
-            <br />
-            Actuellement, je suis à la recherche d’un CDI en tant que développeur fullstack, prêt à relever de nouveaux défis et à apporter ma passion du code à une équipe motivée.
+          <p className='ml-0 mt-8 lg:mt-0 lg:ml-[60px] w-[88%] lg:w-[400px]  h-[180px] text-[10px] whitespace-normal break-words'>
+          En dehors du pro, je suis tout aussi passionné et curieux.<br /> 
+          Ce que j’aime par-dessus tout, c’est surfer…<br /> 
+          Pas sur Internet, mais bien sur les vagues !<br /> 
+          Je fais également des grandes randonnées en autonomie, accompagné de ma fidèle chienne Layka.<br /> 
+          Une compagne de route qui aime aussi monter sur un paddle avec moi quand la mer est plate.
+            
             
             {/* Vous l’avez compris, je suis un vrai touche-à-tout, avide de découvertes et d’aventures. 
             Peut-être que la prochaine se fera avec vous ? 

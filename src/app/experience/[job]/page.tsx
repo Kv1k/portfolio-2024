@@ -46,13 +46,6 @@ import H2n10 from"../../../../public/H2NImg/t10.jpg";
 import H2n11 from"../../../../public/H2NImg/t11.png";
 
 
-import Belounge1 from"../../../../public/beLoungeImg/t1.png";
-import Belounge2 from"../../../../public/beLoungeImg/t2.jpg";
-import Belounge3 from"../../../../public/beLoungeImg/t3.jpg";
-import Belounge4 from"../../../../public/beLoungeImg/t4.jpeg";
-import Belounge6 from"../../../../public/beLoungeImg/t6.png";
-import Belounge7 from"../../../../public/beLoungeImg/t7.jpeg";
-import Belounge9 from"../../../../public/beLoungeImg/t9.jpeg";
 
 type Experience = {
     title: string;
@@ -72,55 +65,46 @@ const experiences: { [key: number]: Experience } = {  1: {
     nameLink:"sudalys.fr",
     company: "Sudalys Technologies",
     location: "Vergèze, France",
-    date: "De janvier 2022 à août 2024",
-    description: `Mon rôle à Sudalys a inclus le développement et la maintenance de fonctionnalités en Symfony dans le logiciel Easy-exploit, aujourd'hui commercialisé.
-    Également en charge de la conception et du développement d'une application mobile innovante, j'ai utilisé les technologies Flutter et Symfony.
-    J'ai pris en main l'ensemble du processus de développement, allant de l'analyse des besoins métier et de l'élaboration du cahier des charges à la création d'une application Flutter efficace et à la mise en place d'une API Symfony personnalisée.`,
-    technologies: ["Symfony", "Twig", "PostgreSQL", "PHP", "JS", "Flutter", "Dart", "JAVA", "Spatialite", "Sqlite", "SQL"],
+    date: "Janvier 2022 à Août 2024",
+    description: `
+    
+        - Développement de nouvelles fonctionnalités pour un logiciel SIG SaaS avec Symfony et Twig.<br/>
+        - Conception et développement en autonomie d’une application mobile SIG en Flutter, connectée au logiciel via une API Symfony.<br/>
+        - Création d’un driver de base de données Flutter en Java pour la gestion de Spatialite.<br/>
+        - Prototypage avec Figma et implémentation de la méthodologie Agile.<br/>
+        - Animation de réunions clients et suivi des besoins utilisateurs.`,
+    technologies: ["Symfony", "Twig", "PHP", "Flutter", "Dart", "Java", "JavaScript", "CSS3", "jQuery", "SQL", "SQLite", "PostgreSQL","PostGIS", "Leaflet", "OpenStreetMap", "QGIS", "Spatialite"],
     images: [Sudalys1,Sudalys2,Sudalys3,Sudalys4,Sudalys5,Sudalys6,Sudalys7,Sudalys8,Sudalys9,Sudalys10,Sudalys11]
 },
   2: {
-    title: "Développeur Front-end",
+    title: "Développeur Full-Stack",
     link:"https://h2n-auto.fr/",
     nameLink:"h2n-auto.fr",
     company: "H2N Automobile",
-    location: "Full Remote",
-    date: "Décembre 2024",
-    description: `Réalisation d’une mission freelance incluant la création d’un site vitrine en Next.js, l’optimisation du référencement (SEO) ainsi que la conception du logo et de l’identité graphique de l’entreprise H2N Automobile.`,
-    technologies: ["JS", "React", "Next.js"],
+    location: "Le Crès, France",
+    date: "Mi-décembre 2024 à Mi-janvier 2025",
+    description: `
+    - Création d’un nouveau logo de l’entreprise (Canva) <br/>
+    - Développement et déploiement d’un site vitrine. <br/>
+    - Protoypage avec Figma.`,
+    technologies: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind"],
     images: [H2n1,H2n9,H2n7,H2n2,H2n4,H2n8,H2n5,H2n6,H2n10,H2n11,H2n3]
   },
   3: {
-    title: "Porteur de projet",
+    title: "Fondateur & Développeur Full-Stack",
     link:"https://angova.eu/",
     nameLink:"angova.eu",
     company: "Angova",
     location: "Full Remote",
-    date: "Depuis 2023",
+    date: "2023 à 2024",
     description: `
-    Angova est un projet dont je suis le porteur depuis maintenant presque deux ans et dont la réalisation 
-    ainsi que les résultats me tiennent énormément à cœur.<br/>
-    Fin 2023, j'ai décidé d'en faire mon projet de fin d'année, ce qui m'a donné l'opportunité de manager une équipe de huit étudiants développeurs.<br/>
-    J'ai également eu la chance de collaborer avec des auto-écoles de ma région ainsi qu'un centre de migrant à Montpellier.<br/>
-    Grâce à sa version bêta, Angova a déjà pu venir en aide à de nombreuses personnes.<br/>
-    À travers ce projet, j'ai pu réaliser les maquettes, une pub vidéo, mettre en place la version bêta, et enfin prospecter des entreprises.<br/>
-    Ce n'est que le début ! La nouvelle version arrive bientôt  &#128521;`,
-    technologies: ["JS", "React", "Next.js", "Node.js", "NOSQL", "MongoDB"],
+    - Conception, développement et gestion d’une plateforme e-learning .<br/>
+    - Management d’une équipe de 8 étudiants développeurs en méthodologie Agile (Scrum).<br/>
+    - Stratégie commerciale : prospection et démonstrations auprès d’entreprises et d’un centre de migrants.`,
+    technologies: ["React", "Next.js", "Node.js", "Docker", "Github Actions (CI/CD)", "TypeScript", "JavaScript", "Tailwind", "NoSQL", "MongoDB"],
     images: [Angova1,Angova7,Angova11,Angova4,Angova9,Angova2,Angova6,Angova10,Angova3,Angova5,Angova8]
 
-  },
-  4: {
-    title: "Intégrateur mail",
-    link:"",
-    nameLink:"",
-    company: "Be Lounge",
-    location: "Full Remote",
-    date: "Juillet 2021",
-    description: `Dans le cadre d'une mission en freelance, j'ai eu l'opportunité de creer la signature mail en XHTML/CSS de l'entreprise Be Lounge.`,
-    technologies: ["XHTML", "CSS"],
-    images: [Belounge1,Belounge6,Belounge3,Belounge3,Belounge3,Belounge4,Belounge6,Belounge9,Belounge7,Belounge2,Belounge7]
-
-  },
+  }
 };
 
 export default function JobPage({ params }: { params: Promise<{ job: string }> }) {
@@ -238,7 +222,7 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
     
   }, []);
   const handleOpenLink = () => {
-    if (typeof window !== "undefined" && experience.company !== "Be Lounge") {
+    if (typeof window !== "undefined") {
       window.open(experience.link, "_blank");
     }
   };
@@ -296,12 +280,12 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                                 <li key={index}>- {tech}</li>
                             ))}
                         </ul>
-                        {(experience.company !== "Be Lounge") && (
+                     
                             <>
                                 <h2 className="block lg:hidden michroma-text underline text-[15px] mb-[5px] ">Lien :</h2>
                                 <p className="block lg:hidden font-extralight text-[15px] mb-[12vh]  "><a href={experience.link} target="_blank" rel="noopener noreferrer" className="underline cursor-pointer">{experience.nameLink}</a> &#8599;</p>
                             </>
-                        )}
+                        
                         
                     </div>
                 </div>
@@ -320,9 +304,8 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                         />
                     </div>
 
-                    {/* Overlay + Texte uniquement si company !== "Be Lounge" */}
-                    {(experience.company !== "Be Lounge" ) && (
-                        <>
+                   
+                       
                         {/* Overlay noir semi-transparent */}
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity"></div>
 
@@ -330,8 +313,8 @@ export default function JobPage({ params }: { params: Promise<{ job: string }> }
                         <span className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                             {experience.nameLink} &#8599;
                         </span>
-                        </>
-                    )}
+                        
+                    
                     </div>          
                     <div className="section_bg_card">
                         <div className="section_bg_card_content">
