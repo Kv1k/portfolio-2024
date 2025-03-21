@@ -68,12 +68,13 @@ const experiences: { [key: number]: Experience } = {  1: {
     date: "Janvier 2022 à Août 2024",
     description: `
     
-        - Développement de nouvelles fonctionnalités pour un logiciel SIG SaaS avec Symfony et Twig.<br/>
-        - Conception et développement en autonomie d’une application mobile SIG en Flutter, connectée au logiciel via une API Symfony.<br/>
-        - Création d’un driver de base de données Flutter en Java pour la gestion de Spatialite.<br/>
-        - Prototypage avec Figma et implémentation de la méthodologie Agile.<br/>
-        - Animation de réunions clients et suivi des besoins utilisateurs.`,
-    technologies: ["Symfony", "Twig", "PHP", "Flutter", "Dart", "Java", "JavaScript", "CSS3", "jQuery", "SQL", "SQLite", "PostgreSQL","PostGIS", "Leaflet", "OpenStreetMap", "QGIS", "Spatialite"],
+        - Développement back-end en PHP (Symfony) et front-end en Twig / CSS pour un logiciel SIG SaaS.<br/>
+        - Conception et développement en autonomie d’une application mobile SIG avec Flutter.<br/>
+        - Gestion de la base de données SQL/SQLite de l’application mobile.<br/>
+        - Création d’une API RESTful (Symfony, API Platform).<br/>
+        - Mise en place d’une méthodologie Agile et prototypage UX/UI avec Figma.<br/>
+        - Analyse des besoins, rédaction de documents techniques et de guides d’utilisation.`,
+    technologies: ["PHP (Symfony/Twig)", "Flutter (Dart)", "Java", "JavaScript","API Platform", "RESTful", "CSS", "SQL", "SQLite", "PostgreSQL","Spatialite","PostGIS", "Leaflet", "Git", "Linux (Ubuntu)"],
     images: [Sudalys1,Sudalys2,Sudalys3,Sudalys4,Sudalys5,Sudalys6,Sudalys7,Sudalys8,Sudalys9,Sudalys10,Sudalys11]
 },
   2: {
@@ -98,9 +99,10 @@ const experiences: { [key: number]: Experience } = {  1: {
     location: "Full Remote",
     date: "2023 à 2024",
     description: `
-    - Conception, développement et gestion d’une plateforme e-learning .<br/>
-    - Management d’une équipe de 8 étudiants développeurs en méthodologie Agile (Scrum).<br/>
-    - Stratégie commerciale : prospection et démonstrations auprès d’entreprises et d’un centre de migrants.`,
+    - Conception et développement d'une plateforme e-learning en JavaScript avec React et Node.js.<br/>
+    - Gestion d’une équipe de 8 développeurs étudiants en méthodologie Agile (Scrum).<br/>
+    - Mise en place de Docker et CI/CD (GitHub Actions) pour automatiser les déploiements.<br/>
+    - Prospection et démonstration auprès d’entreprises.`,
     technologies: ["React", "Next.js", "Node.js", "Docker", "Github Actions (CI/CD)", "TypeScript", "JavaScript", "Tailwind", "NoSQL", "MongoDB"],
     images: [Angova1,Angova7,Angova11,Angova4,Angova9,Angova2,Angova6,Angova10,Angova3,Angova5,Angova8]
 
